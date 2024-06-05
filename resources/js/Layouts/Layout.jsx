@@ -11,7 +11,7 @@ export default function Layout({ children, header, auth }) {
 
     return (
         <div className="min-h-screen bg-gray-100">
-            <nav className="bg-white">
+            <nav className="bg-white w-full fixed">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                     <div className="flex justify-between h-16">
                         <div className="flex">
@@ -22,7 +22,10 @@ export default function Layout({ children, header, auth }) {
                             </div>
                         </div>
                         <div className="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <NavLink href="" active="">
+                            <NavLink
+                                href={route("home")}
+                                active={route().current("home")}
+                            >
                                 Home
                             </NavLink>
                             <NavLink>About Us</NavLink>
@@ -57,7 +60,14 @@ export default function Layout({ children, header, auth }) {
                                             </span>
                                         </Dropdown.Trigger>
                                         <Dropdown.Content>
-                                            <Dropdown.Link href="">
+                                            <Dropdown.Link
+                                                href={route("dashboard")}
+                                            >
+                                                Dashboard
+                                            </Dropdown.Link>
+                                            <Dropdown.Link
+                                                href={route("profile.edit")}
+                                            >
                                                 Profile
                                             </Dropdown.Link>
                                             <Dropdown.Link
@@ -70,14 +80,12 @@ export default function Layout({ children, header, auth }) {
                                         </Dropdown.Content>
                                     </Dropdown>
                                 ) : (
-                                    <>
-                                        <Link
-                                            href="/login"
-                                            className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
-                                        >
-                                            Sell Property
-                                        </Link>
-                                    </>
+                                    <Link
+                                        href="/login"
+                                        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                    >
+                                        Sell Property
+                                    </Link>
                                 )}
                             </div>
                         </div>
@@ -133,35 +141,62 @@ export default function Layout({ children, header, auth }) {
                 >
                     <div className="pt-2 pb-3 space-y-1">
                         <ResponsiveNavLink
-                            href=""
-                            active={route().current("dashboard")}
+                            href={route("home")}
+                            active={route().current("home")}
                         >
-                            Dashboard
+                            Home
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href="" active="">
+                            About Us
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href="" active="">
+                            Properties
+                        </ResponsiveNavLink>
+                        <ResponsiveNavLink href="" active="">
+                            Contact
                         </ResponsiveNavLink>
                     </div>
 
                     <div className="pt-4 pb-1 border-t border-gray-200">
-                        <div className="px-4">
-                            <div className="font-medium text-base text-gray-800">
-                                Name
-                            </div>
-                            <div className="font-medium text-sm text-gray-500">
-                                Email
-                            </div>
-                        </div>
+                        {auth ? (
+                            <>
+                                <div className="px-4">
+                                    <div className="font-medium text-base text-gray-800">
+                                        {auth.name}
+                                    </div>
+                                    <div className="font-medium text-sm text-gray-500">
+                                        {auth.email}
+                                    </div>
+                                </div>
 
-                        <div className="mt-3 space-y-1">
-                            <ResponsiveNavLink href={route("profile.edit")}>
-                                Profile
-                            </ResponsiveNavLink>
-                            <ResponsiveNavLink
-                                method="post"
-                                href={route("logout")}
-                                as="button"
+                                <div className="mt-3 space-y-1">
+                                    <ResponsiveNavLink
+                                        href={route("dashboard")}
+                                    >
+                                        Dashboard
+                                    </ResponsiveNavLink>
+                                    <ResponsiveNavLink
+                                        href={route("profile.edit")}
+                                    >
+                                        Profile
+                                    </ResponsiveNavLink>
+                                    <ResponsiveNavLink
+                                        method="post"
+                                        href={route("logout")}
+                                        as="button"
+                                    >
+                                        Log Out
+                                    </ResponsiveNavLink>
+                                </div>
+                            </>
+                        ) : (
+                            <Link
+                                href="/login"
+                                className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl rounded-md text-sm px-5 py-2.5 text-center me-2 mb-4 ml-4 block"
                             >
-                                Log Out
-                            </ResponsiveNavLink>
-                        </div>
+                                Sell Property
+                            </Link>
+                        )}
                     </div>
                 </div>
             </nav>
