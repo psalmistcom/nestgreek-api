@@ -1,0 +1,22 @@
+.herobg {
+    background: #def1f3;
+    /* background: rgba(3, 48, 5, 0.801); */
+    background-size: "cover";
+    object-fit: cover;
+    font-size: 50px;
+    background-repeat: no-repeat;
+}
+
+.headingColor {
+    color: #071c1f;
+}
+
+.paragraphColor {
+    color: #5C727D;
+}
+
+.primaryBtn {
+    background-color: #064228;
+    color: #fff;
+
+}

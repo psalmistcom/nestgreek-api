@@ -82,7 +82,7 @@ export default function Layout({ children, header, auth }) {
                                 ) : (
                                     <Link
                                         href="/login"
-                                        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2"
+                                        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-8 py-3 text-center me-2 mb-2"
                                     >
                                         Sell Property
                                     </Link>
