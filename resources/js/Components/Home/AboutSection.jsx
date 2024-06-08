@@ -1,4 +1,5 @@
 import { Link } from "@inertiajs/react";
+import SectionIntro from "../SectionIntro";
 
 export default function AboutSection({}) {
     return (
@@ -9,12 +10,12 @@ export default function AboutSection({}) {
                 </div>
                 <div className="mr-auto place-self-top mt-5 lg:col-span-6">
                     <div className="">
-                        <p className="bg-red-100 inline-flex py-2 px-8 text-sm rounded-full text-red-700 font-semibold">
-                            About Us
-                        </p>
-                        <h2 className="my-5 text-gray-900 text-4xl font-extrabold tracking-tight leading-none md:text-4xl lg:text-5xl">
-                            The Leading Real Estate Marketplace.
-                        </h2>
+                        <SectionIntro
+                            title="About Us"
+                            color="red"
+                            bigText="The Leading Real Estate Marketplace"
+                        />
+
                         <p className="text-lg font-normal lg:text-md text-gray-500">
                             We are one of the leading organizations in the real
                             estate sector. For over years, our competencies
