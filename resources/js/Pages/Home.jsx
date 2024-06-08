@@ -4,6 +4,7 @@ import { Link, Head } from "@inertiajs/react";
 import AboutSection from "@/Components/Home/AboutSection";
 import ServicesSection from "@/Components/Home/ServicesSection";
 import FeaturedListings from "@/Components/Home/FeaturedListings";
+import { Testimonial } from "@/Components/Home/Testimonial";
 
 export default function Welcome({ auth }) {
     return (
@@ -17,6 +18,7 @@ export default function Welcome({ auth }) {
                 <AboutSection />
                 <ServicesSection />
                 <FeaturedListings />
+                <Testimonial />
             </Layout>
         </>
     );
