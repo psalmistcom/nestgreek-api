@@ -47,7 +47,7 @@ export default function Hero({ latestProperty, propLink }) {
                                 fill="none"
                                 viewBox="0 0 20 20"
                                 xmlns="http:www.w3.org/2000/svg"
-                                stroke-width="1.5"
+                                strokeWidth="1.5"
                                 stroke="currentColor"
                                 className="mr-4 ml-1 w-5 h-5"
                             >

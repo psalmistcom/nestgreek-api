@@ -13,7 +13,7 @@ export default function ServicesSection({}) {
                         bigText="Our Main Focus"
                     />
                 </div>
-                <div className="grid max-w-screen-xl px-12  mx-auto lg:gap-8 xl:gap-5 lg:py-8 lg:grid-cols-12 overflow-auto">
+                <div className="grid max-w-screen-xl mx-auto lg:gap-8 xl:gap-5 lg:py-8 lg:grid-cols-12">
                     <ServiceCard
                         title="Buy a Home"
                         para="Various homes for sale available on the website, we can match you with a house you will want to call home."

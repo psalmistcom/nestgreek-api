@@ -3,8 +3,8 @@ import SectionIntro from "../SectionIntro";
 
 export default function AboutSection({}) {
     return (
-        <section className="bg-white">
-            <div className="grid max-w-screen-xl px-12 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+        <section className="bg-white ">
+            <div className="grid max-w-screen-xl px-12 py-16 mx-auto lg:gap-8 xl:gap-0 lg:py-24 lg:grid-cols-12">
                 <div className="lg:mt-0 lg:col-span-6 lg:flex">
                     <img src="nest_image_home.png" alt="" />
                 </div>
