@@ -3,9 +3,38 @@ import { Link } from "@inertiajs/react";
 export default function AboutSection({}) {
     return (
         <section className="bg-white">
-            <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
+            <div className="grid max-w-screen-xl px-12 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+                <div className="lg:mt-0 lg:col-span-6 lg:flex">
+                    <img src="nest_image_home.png" alt="" />
+                </div>
+                <div className="mr-auto place-self-top mt-5 lg:col-span-6">
+                    <div className="">
+                        <p className="bg-red-100 inline-flex py-2 px-8 text-sm rounded-full text-red-700 font-semibold">
+                            About Us
+                        </p>
+                        <h2 className="my-5 text-gray-900 text-4xl font-extrabold tracking-tight leading-none md:text-4xl lg:text-5xl">
+                            The Leading Real Estate Marketplace.
+                        </h2>
+                        <p className="text-lg font-normal lg:text-md text-gray-500">
+                            We are one of the leading organizations in the real
+                            estate sector. For over years, our competencies
+                            cover Real Estate Development, Investments and
+                            Consultancies.
+                        </p>
+                    </div>
+                    <div className="my-5">Two cols division here </div>
+                    <div className="my-5 border-l-4 border-red-700  bg-red-100 rounded-tr-xl rounded-br-xl">
+                        <p className="py-4 px-6 text-lg text-red-800">
+                            "We make real estate the most appreciable deal by
+                            combining luxury living with investment medium
+                            towards developing our nation"
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {/* <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
                 <div className="max-w-screen-md mb-8 lg:mb-16">
-                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
+                    <h2 className="mb-4 text-4xl tracking-tight font-extrabold text-gray-900">
                         Designed for business teams like yours
                     </h2>
                     <p className="text-gray-500 sm:text-xl dark:text-gray-400">
@@ -30,7 +59,7 @@ export default function AboutSection({}) {
                                 ></path>
                             </svg>
                         </div>
-                        <h3 className="mb-2 text-xl font-bold dark:text-white">
+                        <h3 className="mb-2 text-xl font-bold text-emerald-600">
                             Marketing
                         </h3>
                         <p className="text-gray-500 dark:text-gray-400">
@@ -154,7 +183,7 @@ export default function AboutSection({}) {
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> */}
         </section>
     );
 }

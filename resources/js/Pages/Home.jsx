@@ -2,6 +2,8 @@ import Layout from "@/Layouts/Layout";
 import Hero from "@/Components/Home/Hero";
 import { Link, Head } from "@inertiajs/react";
 import AboutSection from "@/Components/Home/AboutSection";
+import ServicesSection from "@/Components/Home/ServicesSection";
+import FeaturedListings from "@/Components/Home/FeaturedListings";
 
 export default function Welcome({ auth }) {
     return (
@@ -13,6 +15,8 @@ export default function Welcome({ auth }) {
                     propLink="dashboard"
                 />
                 <AboutSection />
+                <ServicesSection />
+                <FeaturedListings />
             </Layout>
         </>
     );

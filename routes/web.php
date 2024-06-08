@@ -10,9 +10,9 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::prefix('/broker')->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])
-        ->middleware(['auth', 'verified'])
-        ->name('dashboard');
+    Route::middleware(['auth', 'verified'])->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+    });
 });
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [

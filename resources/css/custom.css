@@ -7,6 +7,15 @@
     background-repeat: no-repeat;
 }
 
+::selection {
+    background: #016d4c;
+    color: #def1f3;
+}
+
+.lightBG {
+    background: #def1f3;
+}
+
 .headingColor {
     color: #071c1f;
 }
