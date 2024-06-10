@@ -1,3 +1,4 @@
+import { Link } from "@inertiajs/react";
 import SectionIntro from "../SectionIntro";
 
 export default function FeaturedListings() {
@@ -11,33 +12,26 @@ export default function FeaturedListings() {
                         bigText="Featured Listings"
                     />
                 </div>
-
-                <div className="max-w-md mx-auto rounded-md overflow-hidden shadow-md hover:shadow-lg">
-                    <div className="relative">
+                <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
+                    <Link
+                        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
+                        href=""
+                    >
                         <img
-                            className="w-full"
-                            src="https://images.unsplash.com/photo-1523275335684-37898b6baf30"
-                            alt="Product Image"
+                            src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
+                            className="object-cover"
+                            alt=""
                         />
-                        <div className="absolute top-0 right-0 bg-red-500 text-white px-2 py-1 m-2 rounded-md text-sm font-medium">
-                            SALE
-                        </div>
-                    </div>
-                    <div className="p-4">
-                        <h3 className="text-lg font-medium mb-2">
-                            Product Title
-                        </h3>
-                        <p className="text-gray-600 text-sm mb-4">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing
-                            elit. Duis vitae ante vel eros fermentum faucibus
-                            sit amet euismod lorem.
-                        </p>
-                        <div className="flex items-center justify-between">
-                            <span className="font-bold text-lg">$19.99</span>
-                            <button className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
-                                Buy Now
-                            </button>
-                        </div>
+                        <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-3 py-2 text-center text-white text-sm font-medium">
+                            30% Off
+                        </span>
+                    </Link>
+                    <div className="mt-4 px-5 pb-5">
+                        <Link href="">
+                            <h5 className="text-xl tracking-tight text-slate-900">
+                                Nike Air Super - Red
+                            </h5>
+                        </Link>
                     </div>
                 </div>
             </div>

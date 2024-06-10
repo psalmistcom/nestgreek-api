@@ -5,6 +5,8 @@ import AboutSection from "@/Components/Home/AboutSection";
 import ServicesSection from "@/Components/Home/ServicesSection";
 import FeaturedListings from "@/Components/Home/FeaturedListings";
 import { Testimonial } from "@/Components/Home/Testimonial";
+import Cta from "@/Components/Home/Cta";
+import Footer from "@/Components/Home/Footer";
 
 export default function Welcome({ auth }) {
     return (
@@ -19,6 +21,8 @@ export default function Welcome({ auth }) {
                 <ServicesSection />
                 <FeaturedListings />
                 <Testimonial />
+                <Cta />
+                <Footer />
             </Layout>
         </>
     );

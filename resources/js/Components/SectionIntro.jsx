@@ -8,7 +8,7 @@ export default function SectionIntro({
         <>
             {/* <p className="bg-{color}-100 inline-flex py-2 px-8 text-sm rounded-full text-{color}-700 font-semibold"> */}
             <p
-                className={`bg-${color}-100 inline-flex py-2 px-8 text-sm rounded-full text-${color}-700 font-semibold`}
+                className={`bg-${color}-100 inline-flex py-2 px-8 text-sm rounded-full text-${color}-700 font-semibold tracking-wide`}
             >
                 {title}
             </p>
