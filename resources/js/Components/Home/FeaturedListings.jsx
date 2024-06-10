@@ -1,39 +1,60 @@
-import { Link } from "@inertiajs/react";
 import SectionIntro from "../SectionIntro";
+import ListingCard from "../ListingCard";
 
 export default function FeaturedListings() {
     return (
-        <section className=" bg-white">
-            <div className="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
-                <div className="text-center">
-                    <SectionIntro
-                        title="Properties"
-                        color="emerald"
-                        bigText="Featured Listings"
-                    />
-                </div>
-                <div className="relative m-10 flex w-full max-w-xs flex-col overflow-hidden rounded-lg border border-gray-100 bg-white shadow-md">
-                    <Link
-                        className="relative mx-3 mt-3 flex h-60 overflow-hidden rounded-xl"
-                        href=""
-                    >
-                        <img
-                            src="https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8OHx8c25lYWtlcnxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60"
-                            className="object-cover"
-                            alt=""
-                        />
-                        <span className="absolute top-0 left-0 m-2 rounded-full bg-black px-3 py-2 text-center text-white text-sm font-medium">
-                            30% Off
-                        </span>
-                    </Link>
-                    <div className="mt-4 px-5 pb-5">
-                        <Link href="">
-                            <h5 className="text-xl tracking-tight text-slate-900">
-                                Nike Air Super - Red
-                            </h5>
-                        </Link>
-                    </div>
-                </div>
+        <section className="flex flex-col items-center bg-white py-8">
+            <SectionIntro
+                title="Properties"
+                color="emerald"
+                bigText="Featured Listings"
+            />
+
+            <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-8">
+                <ListingCard
+                    image="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
+                    title="3 Bedroom Duplex"
+                    link="#"
+                    address="238 Baton Rouge, LA 70809, USA"
+                    sqm="1200"
+                    bath="4"
+                    bed="4"
+                    price="4000"
+                    propType="For sale"
+                />
+                <ListingCard
+                    image="https://nestgreeksltd.com/img/properties/1710788493_PHOTO-2024-01-30-20-47-53.jpg"
+                    title="Room and Palour Self Contained"
+                    link="#"
+                    address="238 Baton Rouge, LA 70809, USA"
+                    sqm="1200"
+                    bath="4"
+                    bed="4"
+                    price="4000"
+                    propType="For Rent"
+                    typeColor="red"
+                />
+                <ListingCard
+                    image="luxury-real-estate.jpg"
+                    title="5 Bedroom Mansion"
+                    link="#"
+                    address="238 Baton Rouge, LA 70809, USA"
+                    sqm="1200"
+                    bath="4"
+                    bed="4"
+                    price="4000"
+                    propType="For sale"
+                />
+                <ListingCard
+                    image="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
+                    link="#"
+                    address="238 Baton Rouge, LA 70809, USA"
+                    sqm="1200"
+                    bath="4"
+                    bed="4"
+                    price="4000"
+                    propType="For sale"
+                />
             </div>
         </section>
     );

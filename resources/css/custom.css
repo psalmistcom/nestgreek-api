@@ -29,3 +29,15 @@
     color: #fff;
 
 }
+
+.rightBorder::before {
+    content: "";
+
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    width: 1px;
+    height: 100%;
+    background-color: #000203;
+    opacity: 0.2;
+}
