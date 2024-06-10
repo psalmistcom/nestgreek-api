@@ -3,7 +3,7 @@ import ListingCard from "../ListingCard";
 
 export default function FeaturedListings() {
     return (
-        <section className="flex flex-col items-center bg-white py-8">
+        <section className="px-4 sm:py-16 lg:px-6 flex flex-col items-center bg-white py-8">
             <SectionIntro
                 title="Properties"
                 color="emerald"
