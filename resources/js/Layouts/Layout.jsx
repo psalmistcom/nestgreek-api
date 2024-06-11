@@ -5,6 +5,7 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import Footer from "@/Components/Home/Footer";
+import ScrollToTop from "react-scroll-to-top";
 
 export default function Layout({ children, header, auth }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -220,6 +221,7 @@ export default function Layout({ children, header, auth }) {
 
             <main>{children}</main>
             <Footer />
+            <ScrollToTop smooth className="pr-2 pl-2" height="20" width="20" />
         </div>
     );
 }
