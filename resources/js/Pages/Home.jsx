@@ -22,7 +22,6 @@ export default function Welcome({ auth }) {
                 <FeaturedListings />
                 <Testimonial />
                 <Cta />
-                <Footer />
             </Layout>
         </>
     );

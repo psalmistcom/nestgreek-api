@@ -20,4 +20,10 @@ class HomeController extends Controller
         //     'canRegister' => Route::has('register'),
         // ]);
     }
+
+    public function about()
+    {
+        $auth = Auth::user();
+        return Inertia::render('About', ['auth' => $auth]);
+    }
 }

@@ -4,6 +4,7 @@ import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
+import Footer from "@/Components/Home/Footer";
 
 export default function Layout({ children, header, auth }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -28,7 +29,12 @@ export default function Layout({ children, header, auth }) {
                             >
                                 Home
                             </NavLink>
-                            <NavLink>About Us</NavLink>
+                            <NavLink
+                                href={route("about")}
+                                active={route().current("about")}
+                            >
+                                About Us
+                            </NavLink>
                             <NavLink>Properties</NavLink>
                             <NavLink>Contact</NavLink>
                         </div>
@@ -146,7 +152,10 @@ export default function Layout({ children, header, auth }) {
                         >
                             Home
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink href="" active="">
+                        <ResponsiveNavLink
+                            href={route("about")}
+                            active={route().current("about")}
+                        >
                             About Us
                         </ResponsiveNavLink>
                         <ResponsiveNavLink href="" active="">
@@ -210,6 +219,7 @@ export default function Layout({ children, header, auth }) {
             )}
 
             <main>{children}</main>
+            <Footer />
         </div>
     );
 }
