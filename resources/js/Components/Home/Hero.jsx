@@ -32,13 +32,47 @@ export default function Hero({ latestProperty, propLink }) {
                     <h1 className="text-emerald-900 mb-4 text-4xl font-extrabold tracking-tight leading-none md:text-5xl lg:text-6xl">
                         Discover Most <br /> Suitable Property
                     </h1>
-                    <p className="mb-4 text-lg font-normal lg:text-md text-gray-500 border-l pl-6 border-gray-500">
+                    <p className="mb-4 text-lg font-normal lg:text-md text-gray-500 border-l-2 pl-6 border-gray-500">
                         Find a variety of properties that suit you very easilty{" "}
                         <br />
                         Forget all difficulties in finding a residence for you
                     </p>
 
                     <div className="space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
+                        {/* <form action="#" method="POST" className="mt-10">
+                            <div className="group relative border-2 border-emerald-700 rounded-md p-1 focus-within:ring-1 focus-within:ring-gray-900 sm:flex-row">
+                                <input
+                                    type="text"
+                                    name=""
+                                    placeholder="Search Property"
+                                    className="block bg-transparent px-4 py-4 placeholder-gray-900 inputy outline-none"
+                                    required=""
+                                />
+                                <div className="flex border-emerald-700 sm:absolute sm:inset-y-0 sm:right-0 sm:h-full sm:border-l">
+                                    <button
+                                        type="submit"
+                                        className="uppercase inline-flex font-medium text-xs items-center justify-center bg-emerald-700 px-6 py-3 text-white outline-none transition-all hover:bg-gray-600 focus:bg-gray-600 sm:hover:translate-x-2 sm:hover:-translate-y-2"
+                                    >
+                                        <svg
+                                            fill="none"
+                                            viewBox="0 0 20 20"
+                                            xmlns="http:www.w3.org/2000/svg"
+                                            strokeWidth="1.5"
+                                            stroke="currentColor"
+                                            className="mr-4 ml-1 w-5 h-5"
+                                        >
+                                            <path
+                                                strokeLinecap="round"
+                                                clipRule="evenodd"
+                                                strokeLinejoin="round"
+                                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
+                                            />
+                                        </svg>
+                                        Search Property
+                                    </button>
+                                </div>
+                            </div>
+                        </form> */}
                         <Link
                             href=""
                             className="uppercase inline-flex justify-center items-center py-3 px-8 font-medium text-xs text-center text-white rounded-lg bg-emerald-700 hover:bg-emerald-800"

@@ -2,7 +2,7 @@ import { Link } from "@inertiajs/react";
 
 export default function Cta() {
     return (
-        <div className="bg-emerald-700 px-20 lg:mx-20 lg:rounded-lg py-8 mb-10">
+        <div className="bg-emerald-700 lg:px-20 px-5 lg:mx-20 lg:rounded-lg py-8 mb-10">
             <div className="lg:flex lg:justify-between items-center">
                 <div>
                     <h2 className="font-extrabold tracking-tight leading-none text-4xl md:text-4xl lg:text-5xl text-white">
