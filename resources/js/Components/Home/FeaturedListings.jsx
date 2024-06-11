@@ -47,6 +47,7 @@ export default function FeaturedListings() {
                 />
                 <ListingCard
                     image="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
+                    title="2 Bedroom Terrace Duplex + BQ"
                     link="#"
                     address="238 Baton Rouge, LA 70809, USA"
                     sqm="1200"

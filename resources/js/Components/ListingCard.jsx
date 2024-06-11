@@ -20,10 +20,6 @@ export default function ListingCard({
                     className="w-full h-full object-cover hover:scale-110 transition duration-500"
                     alt=""
                 />
-
-                {/* <span className="uppercase absolute top-0 right-0 m-2 rounded-lg bg-emerald-700 px-4 py-1 text-center text-white text-sm font-medium">
-                    {propType}
-                </span> */}
                 <span
                     className={`uppercase absolute top-0 right-0 m-2 rounded-lg bg-${typeColor}-500 px-4 py-1 text-center text-white text-sm font-medium`}
                 >
@@ -51,7 +47,7 @@ export default function ListingCard({
                 <div className="pb-6">
                     <Link
                         href={link}
-                        className="text-lg hover:text-green-600 font-medium duration-500 ease-in-out"
+                        className="text-xl hover:text-green-600 font-semibold duration-500 ease-in-out"
                     >
                         {title}
                     </Link>
