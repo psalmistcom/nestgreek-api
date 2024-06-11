@@ -41,3 +41,13 @@
     background-color: #000203;
     opacity: 0.2;
 }
+
+.inputy {
+    outline: none !important;
+    border: none !important;
+}
+
+.inputy:focus {
+    outline: none !important;
+    border: none !important;
+}
