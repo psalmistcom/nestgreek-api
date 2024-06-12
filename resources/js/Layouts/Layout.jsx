@@ -37,7 +37,12 @@ export default function Layout({ children, header, auth }) {
                                 About Us
                             </NavLink>
                             <NavLink>Properties</NavLink>
-                            <NavLink>Contact</NavLink>
+                            <NavLink
+                                href={route("contact")}
+                                active={route().current("contact")}
+                            >
+                                Contact
+                            </NavLink>
                         </div>
 
                         <div className="hidden sm:flex sm:items-center sm:ms-6">
@@ -162,7 +167,10 @@ export default function Layout({ children, header, auth }) {
                         <ResponsiveNavLink href="" active="">
                             Properties
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink href="" active="">
+                        <ResponsiveNavLink
+                            href={route("contact")}
+                            active={route().current("contact")}
+                        >
                             Contact
                         </ResponsiveNavLink>
                     </div>

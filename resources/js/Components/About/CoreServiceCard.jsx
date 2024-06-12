@@ -17,7 +17,7 @@ export default function CoreServiceCard({ title, paraText, icon }) {
                 <p className="mb-5 lg:text-2xl text-xl font-semibold px-2">
                     {title}
                 </p>
-                <p className="lg:text-lg text-sm font-medium px-5">
+                <p className="lg:text-lg text-sm font-base text-slate-800 px-5">
                     {paraText}
                 </p>
             </div>

@@ -1,5 +1,5 @@
-import ApplicationLogo from '@/Components/ApplicationLogo';
-import { Link } from '@inertiajs/react';
+import ApplicationLogo from "@/Components/ApplicationLogo";
+import { Link } from "@inertiajs/react";
 
 export default function Guest({ children }) {
     return (
@@ -13,6 +13,15 @@ export default function Guest({ children }) {
             <div className="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {children}
             </div>
+            <p className="mt-10 text-center text-sm text-gray-500 ">
+                Back to{" "}
+                <Link
+                    className="underline text-sm text-gray-600 hover:text-gray-900 rounded-md"
+                    href={route("home")}
+                >
+                    Website
+                </Link>
+            </p>
         </div>
     );
 }

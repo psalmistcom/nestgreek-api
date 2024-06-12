@@ -1,7 +1,7 @@
 export default function CoreValueCard({ title, paraText, icon }) {
     return (
         <article className="mb-4 text-slate-800 overflow-hidden rounded-xl border shadow-md duration-500 ease-in-out hover:shadow-xl hover:bg-emerald-700 hover:text-white">
-            <div class="flex items-center justify-center my-10">
+            <div className="flex items-center justify-center my-10">
                 <div className="mr-3 rounded-lg bg-red-100 p-3 text-7xl text-red-800 hover:bg-green-100 hover:text-green-600">
                     <img src={icon} alt="" width="100" />
                     {/* <svg
