@@ -31,4 +31,9 @@ class HomeController extends Controller
         $auth = Auth::user();
         return Inertia::render('Contact', ['auth' => $auth]);
     }
+    public function properties()
+    {
+        $auth = Auth::user();
+        return Inertia::render('Property', ['auth' => $auth]);
+    }
 }

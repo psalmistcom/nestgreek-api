@@ -103,7 +103,7 @@ export default function () {
                             <li>
                                 <Link
                                     className="hover:text-emerald-600 hover:underline"
-                                    href="#"
+                                    href={route("properties")}
                                 >
                                     All Properties
                                 </Link>
@@ -111,7 +111,7 @@ export default function () {
                             <li>
                                 <Link
                                     className="hover:text-emerald-600 hover:underline"
-                                    href="#"
+                                    href={route("contact")}
                                 >
                                     Contact Us
                                 </Link>

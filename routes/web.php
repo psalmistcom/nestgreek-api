@@ -10,6 +10,7 @@ use Inertia\Inertia;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
+Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
 
 Route::prefix('/broker')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {

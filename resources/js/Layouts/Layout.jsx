@@ -36,7 +36,12 @@ export default function Layout({ children, header, auth }) {
                             >
                                 About Us
                             </NavLink>
-                            <NavLink>Properties</NavLink>
+                            <NavLink
+                                href={route("properties")}
+                                active={route().current("properties")}
+                            >
+                                Properties
+                            </NavLink>
                             <NavLink
                                 href={route("contact")}
                                 active={route().current("contact")}
@@ -164,7 +169,10 @@ export default function Layout({ children, header, auth }) {
                         >
                             About Us
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink href="" active="">
+                        <ResponsiveNavLink
+                            href={route("properties")}
+                            active={route().current("properties")}
+                        >
                             Properties
                         </ResponsiveNavLink>
                         <ResponsiveNavLink

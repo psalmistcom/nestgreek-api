@@ -1,14 +1,16 @@
 import SectionIntro from "../SectionIntro";
 import ListingCard from "../ListingCard";
 
-export default function FeaturedListings() {
+export default function FeaturedListings({ page = true }) {
     return (
         <section className="px-4 sm:py-16 lg:px-6 flex flex-col items-center bg-white py-8">
-            <SectionIntro
-                title="Properties"
-                color="emerald"
-                bigText="Featured Listings"
-            />
+            {page && (
+                <SectionIntro
+                    title="Properties"
+                    color="emerald"
+                    bigText="Featured Listings"
+                />
+            )}
 
             <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-8">
                 <ListingCard
