@@ -5,7 +5,8 @@ import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
 import { Link } from "@inertiajs/react";
 import Footer from "@/Components/Home/Footer";
-import ScrollToTop from "react-scroll-to-top";
+// import ScrollToTop from "react-scroll-to-top";
+import { FloatingWhatsApp } from "react-floating-whatsapp";
 
 export default function Layout({ children, header, auth }) {
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
@@ -99,7 +100,7 @@ export default function Layout({ children, header, auth }) {
                                 ) : (
                                     <Link
                                         href="/login"
-                                        className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-8 py-3 text-center me-2 mb-2"
+                                        className="text-white bg-gradient-to-br from-green-400 to-emerald-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-8 py-3 text-center me-2 mb-2"
                                     >
                                         Sell Property
                                     </Link>
@@ -218,7 +219,7 @@ export default function Layout({ children, header, auth }) {
                         ) : (
                             <Link
                                 href="/login"
-                                className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl rounded-md text-sm px-5 py-2.5 text-center me-2 mb-4 ml-4 block"
+                                className="text-white bg-gradient-to-br from-green-400 to-emerald-600 hover:bg-gradient-to-bl rounded-md text-sm px-5 py-2.5 text-center me-2 mb-4 ml-4 block"
                             >
                                 Sell Property
                             </Link>
@@ -237,7 +238,15 @@ export default function Layout({ children, header, auth }) {
 
             <main>{children}</main>
             <Footer />
-            <ScrollToTop smooth className="pr-2 pl-2" height="20" width="20" />
+            {/* <ScrollToTop smooth className="pr-2 pl-2" height="20" width="20" /> */}
+            <FloatingWhatsApp
+                phoneNumber="+2348105081738"
+                accountName="NestGreeks LTD"
+                avatar="favicon.png"
+                chatMessage={`Hello there! 🤝 \nHow can we help?`}
+                statusMessage="Typically replies within 2 minutes"
+                allowClickAway
+            />
         </div>
     );
 }
