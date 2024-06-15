@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\Broker\DashboardController;
 use App\Http\Controllers\Client\HomeController;
+use App\Http\Controllers\Client\ContactController;
+use App\Http\Controllers\Client\ContactEnquiryController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +13,10 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
+
+Route::middleware('guest')->group(function () {
+    Route::post('store-equiry', [ContactEnquiryController::class, 'store'])->name('enquiry-store');
+});
 
 Route::prefix('/broker')->group(function () {
     Route::middleware(['auth', 'verified'])->group(function () {

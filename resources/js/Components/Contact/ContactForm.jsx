@@ -2,9 +2,19 @@ import PrimaryButton from "../PrimaryButton";
 import { useForm } from "@inertiajs/react";
 
 export default function ContactForm() {
-    const { processing } = useForm({
+    const { data, setData, post, processing, errors, reset } = useForm({
+        name: "",
         email: "",
+        service: "",
+        phone: "",
+        message: "",
     });
+
+    const onSubmit = (e) => {
+        e.preventDefault();
+
+        post(route("enquiry-store"));
+    };
     return (
         <section className="px-4 sm:py-8 lg:px-20 flex flex-col py-8">
             <div>
@@ -12,15 +22,23 @@ export default function ContactForm() {
                     Make Enquiry
                 </h4>
             </div>
-            <form>
+
+            <form onSubmit={onSubmit}>
                 <div className="grid max-w-md grid-cols-1 gap-4  sm:max-w-lg  md:max-w-screen-xl md:grid-cols-2  lg:grid-cols-2 lg:gap-6">
                     <div className="mt-5 lg:mt-10 border-2 rounded-md ">
                         <div className="relative">
                             <input
-                                type="text"
+                                id="name"
                                 name="name"
+                                type="text"
+                                value={data.name}
+                                autoComplete="name"
                                 className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
                                 placeholder="Enter Your name"
+                                required
+                                onChange={(e) =>
+                                    setData("name", e.target.value)
+                                }
                             />
                             <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-4">
                                 <svg
@@ -43,10 +61,17 @@ export default function ContactForm() {
                     <div className="mt-5 lg:mt-10 border-2 rounded-md ">
                         <div className="relative">
                             <input
-                                type="text"
+                                id="email"
                                 name="email"
+                                type="email"
+                                value={data.email}
+                                autoComplete="email"
                                 className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
                                 placeholder="Enter Your Email"
+                                required
+                                onChange={(e) =>
+                                    setData("email", e.target.value)
+                                }
                             />
                             <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-4">
                                 <svg
@@ -69,21 +94,29 @@ export default function ContactForm() {
                     <div className="mt-2 lg:mt-2 border-2 rounded-md ">
                         <div className="">
                             <select
-                                type="text"
+                                id="service"
                                 name="service"
+                                value={data.service}
+                                required
+                                onChange={(e) =>
+                                    setData("service", e.target.value)
+                                }
                                 className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
                             >
-                                <option value="">
-                                    {" "}
-                                    --- Select Service ---{" "}
+                                <option value="">--- Select Service ---</option>
+                                <option value="Property Management">
+                                    Property Management
                                 </option>
-                                <option value="">Property Management</option>
-                                <option value="">Property Consultant</option>
-                                <option value="">Consulting Service</option>
-                                <option value="">
+                                <option value="Property Consultant">
+                                    Property Consultant
+                                </option>
+                                <option value="Consulting Service">
+                                    Consulting Service
+                                </option>
+                                <option value="Home Buying and Selling">
                                     Home Buying and Selling
                                 </option>
-                                <option value="">
+                                <option value="Home and Commercial Building">
                                     Home and Commercial Building
                                 </option>
                             </select>
@@ -93,7 +126,13 @@ export default function ContactForm() {
                         <div className="relative">
                             <input
                                 type="text"
+                                id="phone"
                                 name="phone"
+                                value={data.phone}
+                                autoComplete="phone"
+                                onChange={(e) =>
+                                    setData("phone", e.target.value)
+                                }
                                 className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
                                 placeholder="Enter Your Phone Number"
                             />
@@ -119,8 +158,10 @@ export default function ContactForm() {
                 <div className="mt-5 lg:mt-7 border-2 rounded-md ">
                     <div className="relative">
                         <textarea
-                            type="text"
+                            id="message"
                             name="email"
+                            value={data.message}
+                            onChange={(e) => setData("message", e.target.value)}
                             className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
                             placeholder="Enter Your Email"
                         />

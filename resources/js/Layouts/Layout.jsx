@@ -218,7 +218,7 @@ export default function Layout({ children, header, auth }) {
                             </>
                         ) : (
                             <Link
-                                href="/login"
+                                href={route("login")}
                                 className="text-white bg-gradient-to-br from-green-400 to-emerald-600 hover:bg-gradient-to-bl rounded-md text-sm px-5 py-2.5 text-center me-2 mb-4 ml-4 block"
                             >
                                 Sell Property

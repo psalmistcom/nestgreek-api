@@ -15,7 +15,7 @@ export default function Cta() {
                 </div>
                 <div>
                     <Link
-                        href=""
+                        href={route("properties")}
                         className="uppercase inline-flex justify-center items-center py-4 px-5 font-medium text-xs text-center text-emerald-700 rounded-lg bg-white hover:bg-emerald-100"
                     >
                         Explore Properties
