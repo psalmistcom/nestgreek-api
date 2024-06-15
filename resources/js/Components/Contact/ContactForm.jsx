@@ -159,11 +159,11 @@ export default function ContactForm() {
                     <div className="relative">
                         <textarea
                             id="message"
-                            name="email"
+                            name="message"
                             value={data.message}
                             onChange={(e) => setData("message", e.target.value)}
                             className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
-                            placeholder="Enter Your Email"
+                            placeholder="Enter Your Message"
                         />
                         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-4">
                             <svg

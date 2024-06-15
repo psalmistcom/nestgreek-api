@@ -1,4 +1,3 @@
-import Breadcrumbs from "@/Components/Brokers/BreadCrumb";
 import DashboardCard from "@/Components/Brokers/DashboardCard";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
@@ -35,7 +34,7 @@ export default function Dashboard({ auth }) {
                             para="Add, update and delete your listings"
                         />
                     </Link>
-                    <Link href="">
+                    <Link href={route("profile.edit")}>
                         <DashboardCard
                             icon={
                                 <svg
@@ -61,7 +60,7 @@ export default function Dashboard({ auth }) {
                             para="Phone Numbers, address and company details"
                         />
                     </Link>
-                    <Link href="">
+                    <Link href={route("contact-admin")}>
                         <DashboardCard
                             icon={
                                 <svg

@@ -34,7 +34,6 @@ class HomeController extends Controller
         return Inertia::render('Contact', [
             'auth' => $auth,
             'success' => session('success')
-            // 'success' => "session testing"
         ]);
     }
 

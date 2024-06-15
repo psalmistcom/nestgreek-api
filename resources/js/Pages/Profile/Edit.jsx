@@ -1,19 +1,13 @@
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import Layout from "@/Layouts/Layout";
 import DeleteUserForm from "./Partials/DeleteUserForm";
 import UpdatePasswordForm from "./Partials/UpdatePasswordForm";
 import UpdateProfileInformationForm from "./Partials/UpdateProfileInformationForm";
-import { Head } from "@inertiajs/react";
+import { Head, Link } from "@inertiajs/react";
+import BreadCrumb from "@/Components/Brokers/BreadCrumb";
 
 export default function Edit({ auth, mustVerifyEmail, status }) {
     return (
-        <AuthenticatedLayout
-            user={auth.user}
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Profile
-                </h2>
-            }
-        >
+        <Layout auth={auth.user} header={<BreadCrumb title="Profile" />}>
             <Head title="Profile" />
 
             <div className="py-12">
@@ -35,6 +29,6 @@ export default function Edit({ auth, mustVerifyEmail, status }) {
                     </div>
                 </div>
             </div>
-        </AuthenticatedLayout>
+        </Layout>
     );
 }
