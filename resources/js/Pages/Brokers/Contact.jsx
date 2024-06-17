@@ -11,12 +11,11 @@ export default function ContactAdmin({ auth, success }) {
         department: "",
         message: "",
     });
-    console.log(success);
     const onSubmit = (e) => {
         e.preventDefault();
         post(route("post-contact-admin"), {
-            onSuccess() {
-                preserveScroll: true, reset();
+            onSuccess: () => {
+                reset();
             },
         });
     };

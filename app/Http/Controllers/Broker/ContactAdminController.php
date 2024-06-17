@@ -35,6 +35,6 @@ class ContactAdminController extends Controller
         ]));
 
         return to_route('contact-admin')
-            ->with(`success', 'Message sent successfuly! \n You will get notification within 24hours`);
+            ->with('success', 'Your enquiry has been sent to the admin... we will reply within 12hours');
     }
 }

@@ -16,7 +16,7 @@ export default function ContactForm() {
         post(route("enquiry-store"));
     };
     return (
-        <section className="px-4 sm:py-8 lg:px-20 flex flex-col py-8">
+        <section className="px-4 sm:py-8 lg:px-20 flex  2xl:items-center flex-col py-8">
             <div>
                 <h4 className="text-2xl border-l-2 font-extrabold border-l-emerald-700 pl-5">
                     Make Enquiry
@@ -154,32 +154,34 @@ export default function ContactForm() {
                             </div>
                         </div>
                     </div>
-                </div>
-                <div className="mt-5 lg:mt-7 border-2 rounded-md ">
-                    <div className="relative">
-                        <textarea
-                            id="message"
-                            name="message"
-                            value={data.message}
-                            onChange={(e) => setData("message", e.target.value)}
-                            className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
-                            placeholder="Enter Your Message"
-                        />
-                        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-4">
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                fill="none"
-                                viewBox="0 0 24 24"
-                                strokeWidth={1.5}
-                                stroke="currentColor"
-                                className="h-4 w-4 text-emerald-500 size-6"
-                            >
-                                <path
-                                    strokeLinecap="round"
-                                    strokeLinejoin="round"
-                                    d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
-                                />
-                            </svg>
+                    <div className="col-span-2 mt-2 lg:mt-2 border-2 rounded-md ">
+                        <div className="relative">
+                            <textarea
+                                id="message"
+                                name="message"
+                                value={data.message}
+                                onChange={(e) =>
+                                    setData("message", e.target.value)
+                                }
+                                className="block w-full rounded-md border border-gray-200 py-4 px-4 pr-11 text-sm shadow-sm outline-none focus:z-10 focus:border-emerald-500 focus:ring-emerald-500"
+                                placeholder="Enter Your Message"
+                            />
+                            <div className="pointer-events-none absolute inset-y-0 right-0 z-20 flex items-center pr-4">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="h-4 w-4 text-emerald-500 size-6"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+                                    />
+                                </svg>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Broker\ContactAdminController;
 use App\Http\Controllers\Broker\DashboardController;
+use App\Http\Controllers\Broker\ListingController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\ContactEnquiryController;
@@ -21,6 +22,9 @@ Route::post('store-enquiry', [ContactEnquiryController::class, 'store'])->name('
 Route::prefix('/broker')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+        Route::get('/my-listings', [ListingController::class, 'index'])->name('my-listings');
+        Route::get('/add-property', [ListingController::class, 'add'])->name('add-property');
 
         Route::get('/contact-admin', [ContactAdminController::class, 'index'])->name('contact-admin');
         Route::post('post-contact-admin', [ContactAdminController::class, 'contactAdmin'])->name('post-contact-admin');
