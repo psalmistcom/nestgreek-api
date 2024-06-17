@@ -38,41 +38,37 @@ export default function Hero({ latestProperty, propLink }) {
                         Forget all difficulties in finding a residence for you
                     </p>
 
-                    <div className="space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
-                        {/* <form action="#" method="POST" className="mt-10">
-                            <div className="group relative border-2 border-emerald-700 rounded-md p-1 focus-within:ring-1 focus-within:ring-gray-900 sm:flex-row">
-                                <input
-                                    type="text"
-                                    name=""
-                                    placeholder="Search Property"
-                                    className="block bg-transparent px-4 py-4 placeholder-gray-900 inputy outline-none"
-                                    required=""
+                    <div className="mx-auto mt-5 max-w-screen-md py-5 leading-6">
+                        <form className="relative mx-auto flex w-full max-w-2xl items-center justify-between rounded-md shadow-lg ">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                strokeWidth={1.5}
+                                stroke="currentColor"
+                                className="absolute left-2 block h-5 w-5 text-gray-400 size-6"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
                                 />
-                                <div className="flex border-emerald-700 sm:absolute sm:inset-y-0 sm:right-0 sm:h-full sm:border-l">
-                                    <button
-                                        type="submit"
-                                        className="uppercase inline-flex font-medium text-xs items-center justify-center bg-emerald-700 px-6 py-3 text-white outline-none transition-all hover:bg-gray-600 focus:bg-gray-600 sm:hover:translate-x-2 sm:hover:-translate-y-2"
-                                    >
-                                        <svg
-                                            fill="none"
-                                            viewBox="0 0 20 20"
-                                            xmlns="http:www.w3.org/2000/svg"
-                                            strokeWidth="1.5"
-                                            stroke="currentColor"
-                                            className="mr-4 ml-1 w-5 h-5"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                clipRule="evenodd"
-                                                strokeLinejoin="round"
-                                                d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z"
-                                            />
-                                        </svg>
-                                        Search Property
-                                    </button>
-                                </div>
-                            </div>
-                        </form> */}
+                            </svg>
+                            <input
+                                type="text"
+                                name="search"
+                                className="h-14 w-full rounded-md py-4 pr-40 pl-12 inputy outline-none focus:ring-2 focus:ring-emerald-400"
+                                placeholder="City or Address : "
+                            />
+                            <button
+                                type="submit"
+                                className="absolute bg-emerald-700 right-0 lg:text-base  mr-1 inline-flex h-12 items-center justify-center rounded-lg text-xs capitalize tracking-tight lg:px-10 px-5 font-medium text-white focus:ring-4 hover:bg-emerald-600"
+                            >
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                    {/* <div className="space-y-4 sm:flex-row sm:justify-center sm:space-y-0 sm:space-x-4">
                         <Link
                             href=""
                             className="uppercase inline-flex justify-center items-center py-3 px-8 font-medium text-xs text-center text-white rounded-lg bg-emerald-700 hover:bg-emerald-800"
@@ -94,7 +90,7 @@ export default function Hero({ latestProperty, propLink }) {
                             </svg>
                             search property
                         </Link>
-                    </div>
+                    </div> */}
                 </div>
                 <div className="hidden lg:mt-0 lg:col-span-5 lg:flex">
                     <img src="house.png" alt="mockup" />
