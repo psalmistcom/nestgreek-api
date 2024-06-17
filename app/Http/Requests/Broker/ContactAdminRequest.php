@@ -22,6 +22,7 @@ class ContactAdminRequest extends FormRequest
     public function rules(): array
     {
         return [
+            'user_id' => 'required|string|max:255',
             'subject' => 'required|string|max:255',
             'department' => 'required|string|email|max:255',
             'message' => 'required|string',

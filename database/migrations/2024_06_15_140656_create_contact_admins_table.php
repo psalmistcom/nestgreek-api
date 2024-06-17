@@ -13,16 +13,11 @@ return new class extends Migration
     {
         Schema::create('contact_admins', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('user_id');
+            $table->foreignId('user_id')->constrained('users');
             $table->string('subject');
             $table->string('department');
             $table->longText('message');
             $table->timestamps();
-
-            $table->foreign('user_id')
-                ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
         });
     }
 

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Broker\ContactAdminController;
 use App\Http\Controllers\Broker\DashboardController;
 use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ContactController;
@@ -14,15 +15,16 @@ Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');
 
-Route::middleware('guest')->group(function () {
-    Route::post('store-equiry', [ContactEnquiryController::class, 'store'])->name('enquiry-store');
-});
+Route::post('store-enquiry', [ContactEnquiryController::class, 'store'])->name('enquiry-store');
+
 
 Route::prefix('/broker')->group(function () {
-    Route::middleware(['auth', 'verified'])->group(function () {
+    Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-        Route::get('/contact-admin', [DashboardController::class, 'contact'])->name('contact-admin');
-        Route::post('/contact-admin', [DashboardController::class, 'contactAdmin'])->name('contact-admin');
+
+        Route::get('/contact-admin', [ContactAdminController::class, 'index'])->name('contact-admin');
+        Route::post('post-contact-admin', [ContactAdminController::class, 'contactAdmin'])->name('post-contact-admin');
+
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
