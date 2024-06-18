@@ -8,6 +8,7 @@ use App\Http\Requests\Broker\BrokerRequest;
 use App\Http\Requests\Broker\updateBrokerRequest;
 use App\Http\Resources\Broker\BrokerResource;
 use App\Models\Broker;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -32,16 +33,16 @@ class BrokerProfileController extends Controller
         $auth = Auth::user();
         return Inertia("Brokers/Profile/Create", [
             'auth' => $auth,
-            'success' => session('success')
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(BrokerRequest $request)
+    public function store(BrokerRequest $request, User $user, Broker $broker)
     {
         $data = $request->validated();
+        // $user = UserTypeEnum::BROKER->value;
 
         $image = $data['image'] ?? null;
 
@@ -50,11 +51,11 @@ class BrokerProfileController extends Controller
         }
 
         Broker::create($data);
-        // Update User Model
-        // $data['user_type'] = UserTypeEnum::BROKER->value;
 
-        return to_route('dashboard');
-        // ->with('success', 'Profile updated successfully');
+        // Update User Model       
+
+        return to_route('dashboard')
+            ->with('success', 'Profile updated successfully');
     }
 
     /**
