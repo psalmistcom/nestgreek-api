@@ -29,11 +29,11 @@ export default function Edit({ auth, mustVerifyEmail, status, broker }) {
                             </div>
                         </div>
                     </div>
-                    <BrokersUpdate
+                    {/* <BrokersUpdate
                         broker={broker}
                         mustVerifyEmail={mustVerifyEmail}
                         status={status}
-                    />
+                    /> */}
                     <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
                         <DeleteUserForm className="max-w-xl" />
                     </div>

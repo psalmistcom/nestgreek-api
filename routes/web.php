@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Broker\BrokerProfileController;
 use App\Http\Controllers\Broker\ContactAdminController;
 use App\Http\Controllers\Broker\DashboardController;
 use App\Http\Controllers\Broker\ListingController;
@@ -32,7 +33,9 @@ Route::prefix('/broker')->group(function () {
         Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
         Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
         Route::post('/profile', [ProfileController::class, 'broker'])->name('broker.update');
+        Route::resource('broker', BrokerProfileController::class);
     });
 });
 // Route::get('/', function () {

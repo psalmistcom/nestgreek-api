@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('state')->required();
             $table->string('zip_code')->required();
             $table->integer('phone_number')->required();
-            $table->string('logo_path');
+            $table->string('image_path')->nullable();
             $table->timestamps();
 
             $table->unique(['name', 'zip_code', 'phone_number']);

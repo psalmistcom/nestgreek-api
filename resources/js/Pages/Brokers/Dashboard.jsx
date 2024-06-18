@@ -2,7 +2,15 @@ import DashboardCard from "@/Components/Brokers/DashboardCard";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Dashboard({ auth }) {
+export default function Dashboard({ auth, broker, brokerBool, success }) {
+    const brokerLink =
+        brokerBool === true
+            ? `${route("broker.edit", broker.id)}`
+            : `${route("broker.create")}`;
+    const brokerTitle =
+        brokerBool === true
+            ? "Update Business Details"
+            : "Add Business Details";
     return (
         <Layout
             auth={auth}
@@ -14,6 +22,55 @@ export default function Dashboard({ auth }) {
         >
             <Head title="Dashboard" />
             <section className="px-4 sm:py-16 lg:px-6 flex flex-col items-center py-8">
+                {success && (
+                    <div
+                        role="alert"
+                        data-dismissible="alert"
+                        className="mb-4 relative flex w-1/2 py-4 px-4 text-base text-white bg-emerald-500 rounded-lg"
+                    >
+                        <div className="shrink-0">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clipRule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div className="ml-3 mr-12">
+                            <p className="block antialiased leading-snug tracking-normal text-white">
+                                {success}
+                            </p>
+                        </div>
+                        <button
+                            datadismissibletarget="alert"
+                            className="!absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                        >
+                            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                    strokeWidth="2"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                )}
                 <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-8">
                     <Link href={route("my-listings")}>
                         <DashboardCard
@@ -58,6 +115,25 @@ export default function Dashboard({ auth }) {
                             }
                             title="Profile"
                             para="Phone Numbers, address and company details"
+                        />
+                    </Link>
+                    <Link href={brokerLink}>
+                        <DashboardCard
+                            icon={
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="1em"
+                                    height="1em"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        fill="currentColor"
+                                        d="m14.02 21.923l-7.616-2.22V21h-4v-8.154h6.373l7.358 2.693v1.615H21v2.615zM3.403 20h2v-6.154h-2zm10.565.862l6.008-1.831v-.877h-6.921L9.95 17.142l.33-.957l2.926.969h1.929v-.92l-6.516-2.388H6.404v4.808zM19 14.769v-7l-5.5-3.846L8 7.769v2.692H7V7.29l6.5-4.635L20 7.289v7.48zm-4.904-6.327h.808v-.808h-.808zm-2 0h.808v-.808h-.808zm2 2h.808v-.808h-.808zm-2 0h.808v-.808h-.808z"
+                                    ></path>
+                                </svg>
+                            }
+                            title={brokerTitle}
+                            para="Information about your business"
                         />
                     </Link>
                     <Link href={route("contact-admin")}>
