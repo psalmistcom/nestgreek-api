@@ -46,7 +46,6 @@ export default function UpdateProfileInformation({
                         value={data.name}
                         onChange={(e) => setData("name", e.target.value)}
                         required
-                        isFocused
                         autoComplete="name"
                     />
 
@@ -102,7 +101,9 @@ export default function UpdateProfileInformation({
                         leave="transition ease-in-out"
                         leaveTo="opacity-0"
                     >
-                        <p className="text-sm text-gray-600">Saved.</p>
+                        <p className="text-sm text-gray-600">
+                            Profile Updated Successfuly.
+                        </p>
                     </Transition>
                 </div>
             </form>

@@ -1,6 +1,8 @@
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
+import PrimaryButton from "@/Components/PrimaryButton";
 import TextInput from "@/Components/TextInput";
+import { Transition } from "@headlessui/react";
 import { useForm } from "@inertiajs/react";
 
 export default function BrokersUpdate({
@@ -10,18 +12,24 @@ export default function BrokersUpdate({
     broker,
 }) {
     const brokerData = broker[0];
-    const { data, setData, post, errors, processing } = useForm({
-        name: brokerData.name,
-        address: brokerData.address || "",
-        state: brokerData.state || "",
-        zip_code: brokerData.zip_code || "",
-        phone_number: brokerData.phone_number || "",
-        logo_path: "",
-    });
+    const { data, setData, post, errors, processing, recentlySuccessful } =
+        useForm({
+            user_id: brokerData.user_id || "",
+            name: brokerData.name || "",
+            address: brokerData.address || "",
+            state: brokerData.state || "",
+            zip_code: brokerData.zip_code || "",
+            phone_number: brokerData.phone_number || "",
+            logo_path: "",
+            _method: "PATCH",
+        });
     const updateBroker = (e) => {
         e.preventDefault();
 
-        // post(route("broker.update", broker.id));
+        post(route("broker.update", broker.id), {
+            preserveScroll: true,
+            onSuccess: () => reset(),
+        });
     };
     return (
         <section className="bg-white shadow-md rounded-md border mx-10">
@@ -34,9 +42,14 @@ export default function BrokersUpdate({
                     Update your account before listing a property .
                 </p>
             </header>
-            <form onSubmit={updateBroker} className="mt-6 space-y-6">
-                <div className=" mt-10 grid max-w-md grid-cols-1 gap-4 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-2 lg:gap-6">
-                    <div className="mb-4 text-slate-800">
+            {status === "done" && (
+                <div className="mt-2 font-medium text-sm text-green-600">
+                    Your Information has been updated succesfully.
+                </div>
+            )}
+            <form onSubmit={updateBroker} className="space-y-6">
+                <div className="my-10 grid max-w-md grid-cols-1 gap-4 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-2 lg:gap-6">
+                    <div className="text-slate-800">
                         <div>
                             <InputLabel
                                 htmlFor="name"
@@ -51,7 +64,6 @@ export default function BrokersUpdate({
                                     setData("name", e.target.value)
                                 }
                                 required
-                                isFocused
                                 autoComplete="name"
                             />
 
@@ -107,7 +119,7 @@ export default function BrokersUpdate({
                             />
                         </div>
                     </div>
-                    <div className="mb-4 text-slate-800">
+                    <div className="text-slate-800">
                         <div>
                             <InputLabel
                                 htmlFor="zip_code"
@@ -161,13 +173,12 @@ export default function BrokersUpdate({
 
                             <TextInput
                                 id="logo_path"
+                                type="file"
+                                name="logo_path"
                                 className="mt-1 block w-full"
-                                value={data.logo_path}
                                 onChange={(e) =>
-                                    setData("logo_path", e.target.value)
+                                    setData("logo_path", e.target.files[0])
                                 }
-                                required
-                                autoComplete="logo_path"
                             />
 
                             <InputError
@@ -175,6 +186,22 @@ export default function BrokersUpdate({
                                 message={errors.logo_path}
                             />
                         </div>
+                    </div>
+                    <div className="col-span-2">
+                        <PrimaryButton disabled={processing}>
+                            Save
+                        </PrimaryButton>
+                        <Transition
+                            show={recentlySuccessful}
+                            enter="transition ease-in-out"
+                            enterFrom="opacity-0"
+                            leave="transition ease-in-out"
+                            leaveTo="opacity-0"
+                        >
+                            <p className="text-sm text-gray-600">
+                                Succesfully updated.
+                            </p>
+                        </Transition>
                     </div>
                 </div>
             </form>
