@@ -12,17 +12,22 @@ class ListingController extends Controller
     public function index()
     {
         $auth = Auth::user();
-        return Inertia::render('Brokers/Listings', [
+        $isABroker = true;
+        return Inertia::render('Brokers/Listing/Index', [
+            'auth' => $auth,
+            'isABroker' => $isABroker
+        ]);
+    }
+    public function create()
+    {
+        $auth = Auth::user();
+        return Inertia::render('Brokers/Listing/Create', [
             'auth' => $auth,
             // 'success' => session('success')
         ]);
     }
-    public function add()
+
+    public function store()
     {
-        $auth = Auth::user();
-        return Inertia::render('Brokers/Add', [
-            'auth' => $auth,
-            // 'success' => session('success')
-        ]);
     }
 }

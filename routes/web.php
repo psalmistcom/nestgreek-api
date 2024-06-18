@@ -24,8 +24,8 @@ Route::prefix('/broker')->group(function () {
     Route::middleware(['auth'])->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
-        Route::get('/my-listings', [ListingController::class, 'index'])->name('my-listings');
-        Route::get('/add-property', [ListingController::class, 'add'])->name('add-property');
+        // Route::get('/my-listings', [ListingController::class, 'index'])->name('my-listings');
+        // Route::get('/add-property', [ListingController::class, 'add'])->name('add-property');
 
         Route::get('/contact-admin', [ContactAdminController::class, 'index'])->name('contact-admin');
         Route::post('post-contact-admin', [ContactAdminController::class, 'contactAdmin'])->name('post-contact-admin');
@@ -36,6 +36,7 @@ Route::prefix('/broker')->group(function () {
 
         Route::post('/profile', [ProfileController::class, 'broker'])->name('broker.update');
         Route::resource('broker', BrokerProfileController::class);
+        Route::resource('/listing', ListingController::class);
     });
 });
 // Route::get('/', function () {
