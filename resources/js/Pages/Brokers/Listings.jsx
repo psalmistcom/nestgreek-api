@@ -1,6 +1,4 @@
 import BreadCrumb from "@/Components/Brokers/BreadCrumb";
-import Pagination from "@/Components/Pagination";
-import PrimaryButton from "@/Components/PrimaryButton";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
@@ -40,7 +38,7 @@ export default function Listings({ auth }) {
                         </div>
                         {/* Listed Properties  */}
                         <div className="my-5">
-                            <div className="group bg-white mt-10 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg ">
+                            <div className="group bg-white mt-10 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border pt-8 pb-2 text-gray-700 shadow transition hover:shadow-lg ">
                                 <Link
                                     href="#"
                                     className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4"
@@ -57,13 +55,13 @@ export default function Listings({ auth }) {
                                     <h3 className="text-sm text-gray-600">
                                         Invision
                                     </h3>
-                                    <a
+                                    <Link
                                         href="#"
                                         className="mb-3 overflow-hidden pr-7 text-lg font-semibold sm:text-xl"
                                     >
                                         {" "}
                                         Sr. Frontend Engineer{" "}
-                                    </a>
+                                    </Link>
                                     <p className="overflow-hidden pr-7 text-sm">
                                         Lorem ipsum dolor sit amet, consectetuer
                                         adipiscing elit, sed diam nonummy nibh
@@ -81,7 +79,23 @@ export default function Listings({ auth }) {
                                         </div>
                                         <div className="">
                                             Salary:
-                                            <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
+                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
+                                                180-250k
+                                            </span>
+                                        </div>
+                                    </div>
+                                    {/* Action section  */}
+                                    <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-900 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
+                                        <div className="font-extrabold">
+                                            Action:
+                                            <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-0.5 text-green-900">
+                                                {" "}
+                                                2 Years{" "}
+                                            </span>
+                                        </div>
+                                        <div className="">
+                                            Salary:
+                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
                                                 180-250k
                                             </span>
                                         </div>
@@ -131,7 +145,7 @@ export default function Listings({ auth }) {
                                         </div>
                                         <div className="">
                                             Salary:
-                                            <span className="ml-2 mr-3 rounded-full bg-blue-100 px-2 py-0.5 text-blue-900">
+                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
                                                 180-250k
                                             </span>
                                         </div>
@@ -143,11 +157,33 @@ export default function Listings({ auth }) {
                         <div className="flex justify-center">
                             Pagination goes here
                         </div>
+                        <div className="flex items-center justify-between">
+                            <Link
+                                href={route("add-property")}
+                                className="inline-flex items-center px-4 py-2  bg-emerald-700 rounded-sm font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-600 focus:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150"
+                            >
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    strokeWidth={1.5}
+                                    stroke="currentColor"
+                                    className="size-6 mr-2"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                    />
+                                </svg>
+                                Add Property
+                            </Link>
+                        </div>
                     </article>
 
                     {/* Left side */}
                     <article className="px-5 mb-4">
-                        {/* Quick Stats : Published Listings, Unplublished Listings, Total Listings */}
+                        {/* Quick Stats : Sold Listings, On sale Listings, on Hold and Total Listings */}
                         <div className="border border-emerald-700 shadow-lg rounded-sm">
                             <div className="bg-emerald-700 px-3 py-3 text-center text-white">
                                 <p className="text-xl font-semibold tracking-wide flex justify-center items-center">
@@ -170,11 +206,15 @@ export default function Listings({ auth }) {
                             </div>
                             <div className="m-5">
                                 <p>
-                                    Published Listings:{" "}
+                                    Sold Listings:{" "}
                                     <span className="font-extrabold">0</span>
                                 </p>
                                 <p>
-                                    Unpublished Listings:{" "}
+                                    On Sale Listings:{" "}
+                                    <span className="font-extrabold">0</span>
+                                </p>
+                                <p>
+                                    On Hold Listings:{" "}
                                     <span className="font-extrabold">0</span>
                                 </p>
                                 <p>

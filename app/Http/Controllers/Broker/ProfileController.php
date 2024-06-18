@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Broker;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Http\Resources\Broker\BrokerResource;
+use App\Models\Broker;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -19,9 +21,14 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): Response
     {
+
+        $query = Broker::query()->where('user_id', Auth::id())->get();
+        // $query = Broker::all();
         return Inertia::render('Profile/Edit', [
             'mustVerifyEmail' => $request->user() instanceof MustVerifyEmail,
             'status' => session('status'),
+            'broker' => BrokerResource::collection($query)
+            // 'broker' => $query
         ]);
     }
 
