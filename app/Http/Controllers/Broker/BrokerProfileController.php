@@ -8,25 +8,14 @@ use App\Http\Requests\Broker\BrokerRequest;
 use App\Http\Requests\Broker\updateBrokerRequest;
 use App\Http\Resources\Broker\BrokerResource;
 use App\Models\Broker;
-use App\Models\User;
-use Closure;
-use ErrorException;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Storage;
-use Inertia\Inertia;
 use Illuminate\Support\Str;
 
 class BrokerProfileController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware(function (Request $request, Closure $next) {
-    //         if (checkUserType(['Client'], $request->user()->user_type)) return $next($request);
-    //     })->only(['store']);
-    // }
+
     /**
      * Display a listing of the resource.
      */
@@ -63,7 +52,13 @@ class BrokerProfileController extends Controller
         $broker = Broker::create($data);
 
         // Update User Model         
-        DB::table('users')->where('id', $broker->user_id)->update(['user_type' => UserTypeEnum::BROKER->value]);
+        DB::table('users')
+            ->where('id', $broker->user_id)
+            ->update(
+                [
+                    'user_type' => UserTypeEnum::BROKER->value
+                ]
+            );
 
         return to_route('dashboard')
             ->with('success', 'Profile updated successfully');
