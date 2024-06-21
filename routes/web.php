@@ -8,6 +8,7 @@ use App\Http\Controllers\Client\HomeController;
 use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\ContactEnquiryController;
 use App\Http\Controllers\Broker\ProfileController;
+use App\Http\Middleware\BrokerMiddleware;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -36,7 +37,9 @@ Route::prefix('/broker')->group(function () {
 
         Route::post('/profile', [ProfileController::class, 'broker'])->name('broker.update');
         Route::resource('broker', BrokerProfileController::class);
-        Route::resource('/listing', ListingController::class);
+        Route::middleware([BrokerMiddleware::class])->group(function () {
+            Route::resource('/listing', ListingController::class);
+        });
     });
 });
 // Route::get('/', function () {

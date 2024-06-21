@@ -50,22 +50,6 @@ class ProfileController extends Controller
 
         return Redirect::route('profile.edit');
     }
-    public function broker(BrokerRequest $request, Broker $broker): RedirectResponse
-    {
-
-        $broker->update($request->validate([
-            "name" => ['required', 'max:255'],
-            "address" => ['required'],
-            "state" => ['required'],
-            "zip_code" => ['required'],
-            "phone_number" => ['required'],
-            "logo_path" => ['nullable'],
-            'user_id' => ['required', 'exists:users,id'],
-        ]));
-
-        return to_route('contact-admin')
-            ->with('done',);
-    }
     // public function broker(BrokerRequest $request, Broker $broker): RedirectResponse
     // {
     //     $data = $request->validated();

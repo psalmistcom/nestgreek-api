@@ -2,7 +2,7 @@ import BreadCrumb from "@/Components/Brokers/BreadCrumb";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Listings({ auth }) {
+export default function Listings({ auth, isABroker }) {
     return (
         <Layout
             auth={auth}
@@ -15,26 +15,28 @@ export default function Listings({ auth }) {
                     <article className="col-span-2 mb-4 text-slate-800">
                         {/* Add property btn */}
                         <div className="flex items-center justify-between">
-                            <Link
-                                href={route("listing.create")}
-                                className="inline-flex items-center px-4 py-2  bg-emerald-700 rounded-sm font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-600 focus:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150"
-                            >
-                                <svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    fill="none"
-                                    viewBox="0 0 24 24"
-                                    strokeWidth={1.5}
-                                    stroke="currentColor"
-                                    className="size-6 mr-2"
+                            {isABroker === true && (
+                                <Link
+                                    href={route("listing.create")}
+                                    className="inline-flex items-center px-4 py-2  bg-emerald-700 rounded-sm font-semibold text-xs text-white uppercase tracking-widest hover:bg-emerald-600 focus:bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:ring-offset-2 transition ease-in-out duration-150"
                                 >
-                                    <path
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                        d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
-                                    />
-                                </svg>
-                                Add Property
-                            </Link>
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        fill="none"
+                                        viewBox="0 0 24 24"
+                                        strokeWidth={1.5}
+                                        stroke="currentColor"
+                                        className="size-6 mr-2"
+                                    >
+                                        <path
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
+                                            d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"
+                                        />
+                                    </svg>
+                                    Add Property
+                                </Link>
+                            )}
                         </div>
                         {/* Listed Properties  */}
                         <div className="my-5">
