@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('broker_id');
+            $table->string('title')->required();
             $table->string('address');
             $table->enum('listing_type', [
                 ListingTypeEnum::LEASE->value,
@@ -24,8 +25,8 @@ return new class extends Migration
                 ListingTypeEnum::SALE->value,
             ])->required();
             $table->string('city')->required();
-            $table->string('zip_code')->required();
             $table->longText('description')->required();
+            $table->integer('isPublished')->required();
             $table->timestamps();
 
             $table->foreign('broker_id')

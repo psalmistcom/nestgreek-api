@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests\Broker;
 
+use App\Models\Broker;
 use Illuminate\Foundation\Http\FormRequest;
 
 class BrokerRequest extends FormRequest
@@ -22,11 +23,12 @@ class BrokerRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "name" => ['required', 'max:255'],
+            // "name" => ['required', 'max:255', 'unique:' . Broker::class],
+            "name" => 'required|string|max:255|unique:' . Broker::class,
             "address" => ['required'],
             "state" => ['required'],
-            "zip_code" => ['required'],
-            "phone_number" => ['required'],
+            "zip_code" => 'nullable',
+            "phone_number" => 'required|max:14|unique:' . Broker::class,
             'image' => ['nullable', 'image'],
             'user_id' => ['required', 'exists:users,id'],
         ];

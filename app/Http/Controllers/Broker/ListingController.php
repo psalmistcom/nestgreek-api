@@ -23,13 +23,16 @@ class ListingController extends Controller
     public function create()
     {
         $auth = Auth::user();
+        $broker = Broker::query()->where('user_id', Auth::id())->first();
         return Inertia::render('Brokers/Listing/Create', [
             'auth' => $auth,
+            'broker' => $broker
             // 'success' => session('success')
         ]);
     }
 
     public function store()
     {
+        return redirect()->back()->with('message', 'Property Added');
     }
 }

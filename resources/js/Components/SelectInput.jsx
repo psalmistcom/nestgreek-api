@@ -1,7 +1,7 @@
 import { forwardRef, useEffect, useRef } from "react";
 
-export default forwardRef(function TextInput(
-    { type = "text", className = "", isFocused = false, ...props },
+export default forwardRef(function SelectInput(
+    { children, className = "", isFocused = false, ...props },
     ref
 ) {
     const input = ref ? ref : useRef();
@@ -13,14 +13,15 @@ export default forwardRef(function TextInput(
     }, []);
 
     return (
-        <input
+        <select
             {...props}
-            type={type}
             className={
-                "border-gray-300 py-3 focus:border-emerald-500 focus:ring-emerald-500 rounded-md shadow-sm " +
+                "border-gray-300 focus:border-emerald-500 focus:ring-emerald-500 py-3 rounded-md shadow-sm " +
                 className
             }
             ref={input}
-        />
+        >
+            {children}
+        </select>
     );
 });

@@ -17,12 +17,12 @@ return new class extends Migration
             $table->string('name')->required();
             $table->string('address')->required();
             $table->string('state')->required();
-            $table->string('zip_code')->required();
+            $table->string('zip_code')->nullable();
             $table->integer('phone_number')->required();
             $table->string('image_path')->nullable();
             $table->timestamps();
 
-            $table->unique(['name', 'zip_code', 'phone_number']);
+            $table->unique(['name', 'phone_number']);
         });
     }
 
