@@ -2,7 +2,8 @@ import BreadCrumb from "@/Components/Brokers/BreadCrumb";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Listings({ auth, isABroker }) {
+export default function Listings({ auth, isABroker, property }) {
+    console.log(property);
     return (
         <Layout
             auth={auth}

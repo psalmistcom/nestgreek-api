@@ -28,12 +28,11 @@ export default function PropertyForm({ broker }) {
 
     const submitProperty = (e) => {
         e.preventDefault();
-        console.log(data);
+        // console.log(data);
         post(route("listing.store"), {
-            preserveScroll: true,
-            // onSuccess: () => reset(),
+            // preserveScroll: true,
+            onSuccess: () => reset(),
         });
-        // post(route("listing.store"));
     };
     return (
         <section className="">

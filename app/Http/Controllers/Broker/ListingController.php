@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Broker;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Broker\ListingRequest;
+use App\Http\Resources\Broker\PropertyResource;
 use App\Models\Broker;
 use App\Models\Property;
 use Illuminate\Http\Request;
@@ -15,12 +16,19 @@ class ListingController extends Controller
 {
     public function index()
     {
+        // $property = PropertyResource::collection(Property::paginate());
+
         $auth = Auth::user();
         $broker = Broker::query()->where('user_id', Auth::id())->first();
+
+        // $property = Property::query()->where('broker_id', $broker->id)->paginate(10);
+        $propQuery = Property::query()->where('broker_id', $broker->id)->paginate(10);
+        $property = PropertyResource::collection($propQuery);
         $isABroker = $broker ? true : false;
         return Inertia::render('Brokers/Listing/Index', [
             'auth' => $auth,
-            'isABroker' => $isABroker
+            'isABroker' => $isABroker,
+            'property' => $property
         ]);
     }
     public function create()
@@ -29,7 +37,7 @@ class ListingController extends Controller
         $broker = Broker::query()->where('user_id', Auth::id())->first();
         return Inertia::render('Brokers/Listing/Create', [
             'auth' => $auth,
-            'broker' => $broker
+            'broker' => $broker,
             // 'success' => session('success')
         ]);
     }
@@ -71,6 +79,7 @@ class ListingController extends Controller
             throw $th;
         }
 
-        return redirect()->back()->with('success', 'Property Added');
+        return to_route('dashboard')
+            ->with('success', 'Property Added successfully');
     }
 }

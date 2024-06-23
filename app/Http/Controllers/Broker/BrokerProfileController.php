@@ -51,14 +51,15 @@ class BrokerProfileController extends Controller
 
         $broker = Broker::create($data);
 
+        $broker->user()->update(['user_type' => UserTypeEnum::BROKER->value]);
         // Update User Model         
-        DB::table('users')
-            ->where('id', $broker->user_id)
-            ->update(
-                [
-                    'user_type' => UserTypeEnum::BROKER->value
-                ]
-            );
+        // DB::table('users')
+        //     ->where('id', $broker->user_id)
+        //     ->update(
+        //         [
+        //             'user_type' => UserTypeEnum::BROKER->value
+        //         ]
+        //     );
 
         return to_route('dashboard')
             ->with('success', 'Profile updated successfully');
