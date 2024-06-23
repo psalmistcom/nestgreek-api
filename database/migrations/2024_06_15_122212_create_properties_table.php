@@ -24,9 +24,9 @@ return new class extends Migration
                 ListingTypeEnum::RENT->value,
                 ListingTypeEnum::SALE->value,
             ])->required();
-            $table->string('city')->required();
+            $table->string('state')->required();
             $table->longText('description')->required();
-            $table->integer('isPublished')->required();
+            $table->boolean('isPublished')->required();
             $table->timestamps();
 
             $table->foreign('broker_id')

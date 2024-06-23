@@ -8,44 +8,56 @@ import { Link } from "@inertiajs/react";
 import { useForm } from "@inertiajs/react";
 
 export default function PropertyForm({ broker }) {
-    const { data, setData, post, processing, errors, reset } = useForm({
-        broker_id: broker.id,
-        title: "",
-        address: "",
-        listing_type: "",
-        state: "",
-        description: "",
-        isPublished: "",
-        price: "",
-        bedrooms: "",
-        bathrooms: "",
-        sqft: "",
-        property_status: "",
-        property_type: "",
-    });
+    const { data, setData, post, processing, errors, reset, progress } =
+        useForm({
+            broker_id: broker.id,
+            title: "",
+            address: "",
+            listing_type: "",
+            state: "",
+            description: "",
+            isPublished: "",
+            price: "",
+            bedrooms: "",
+            bathrooms: "",
+            sqft: "",
+            property_status: "",
+            property_type: "",
+            upload_img: "",
+        });
 
-    const onSubmit = (e) => {
+    const submitProperty = (e) => {
         e.preventDefault();
-
-        post(route("listing.store"));
+        console.log(data);
+        post(route("listing.store"), {
+            preserveScroll: true,
+            // onSuccess: () => reset(),
+        });
+        // post(route("listing.store"));
     };
     return (
         <section className="">
-            <div className="bg-orange-200 border rounded border-orange-500 px-10 py-7 text-orange-800">
-                <h3 className="text-base font-extrabold">
-                    Rules for Listing Property
-                </h3>
-                <p>
-                    It is important that you read and understand the rules for
-                    listing property on NestGreeks Limited Broker's Page.{" "}
-                    <Link href="#" className="text-emerald-600 hover:underline">
-                        {" "}
-                        Click here for details
-                    </Link>
-                </p>
+            <div className="lg:container lg:w-full items-center flex justify-center ">
+                <div className="bg-orange-200 border rounded border-orange-500 px-10 py-7 text-orange-800">
+                    <h3 className="text-base font-extrabold">
+                        Rules for Listing Property
+                    </h3>
+                    <p>
+                        It is important that you read and understand the rules
+                        for listing property on NestGreeks Limited Broker's
+                        Page.{" "}
+                        <Link
+                            href="#"
+                            className="text-emerald-600 hover:underline"
+                        >
+                            {" "}
+                            Click here for details
+                        </Link>
+                    </p>
+                </div>
             </div>
             <div className="px-8 py-8">
-                <form onSubmit={onSubmit} enctype="multipart/form-data">
+                <form onSubmit={submitProperty}>
                     <div className="flex gap-x-4">
                         <div className="relative flex w-56 items-center justify-center rounded-sm bg-gray-50 px-4 py-3 font-medium text-gray-700">
                             <input
@@ -53,11 +65,11 @@ export default function PropertyForm({ broker }) {
                                 type="radio"
                                 name="isPublished"
                                 id="radio1"
-                                value={data.isPublished}
+                                value="0"
                                 onChange={(e) =>
                                     setData("isPublished", e.target.value)
                                 }
-                                checked
+                                checked={data.isPublished === "0"}
                             />
                             <label
                                 className="peer-checked:border-emerald-400 peer-checked:bg-emerald-200 absolute top-0 h-full w-full cursor-pointer rounded-xl border"
@@ -76,11 +88,11 @@ export default function PropertyForm({ broker }) {
                                 type="radio"
                                 name="isPublished"
                                 id="radio3"
-                                value={data.isPublished}
+                                value="1"
                                 onChange={(e) =>
                                     setData("isPublished", e.target.value)
                                 }
-                                checked
+                                checked={data.isPublished === "1"}
                             />
                             <label
                                 className="peer-checked:border-emerald-400 peer-checked:bg-emerald-200 absolute top-0 h-full w-full cursor-pointer rounded-xl border"
@@ -93,6 +105,10 @@ export default function PropertyForm({ broker }) {
                                 Publish
                             </span>
                         </div>
+                        <InputError
+                            className="mt-2"
+                            message={errors.isPublished}
+                        />
                     </div>
 
                     <div className="grid max-w-md grid-cols-1 gap-4  sm:max-w-lg  md:max-w-screen-xl md:grid-cols-3 lg:grid-cols-3 lg:gap-6">
@@ -339,28 +355,41 @@ export default function PropertyForm({ broker }) {
                         <div className="imageForm">
                             <InputLabel
                                 htmlFor="upload_img"
-                                value="Upload Image(s)"
+                                value="Upload Image (You can upload multiple images)"
                             />
                             <div className="relative border border-dashed bg-white mt-2 flex justify-center items-center rounded ">
                                 <TextInput
                                     type="file"
-                                    id
+                                    id="upload_img"
                                     accept="image/*"
-                                    name="upload_img[]"
-                                    multiple
+                                    name="upload_img"
                                     className=""
+                                    onChange={(e) =>
+                                        setData("upload_img", e.target.files[0])
+                                    }
+                                    // onChange={
+                                    //     // (e) => setData.push(e.target.files[0])
+                                    //     setData("upload_img", e.target.files[0])
+                                    //     // images.push(e.target.files[0])
+                                    // }
                                 />
                             </div>
                         </div>
                     </div>
+
                     <div className="mt-5 lg:mt-7">
                         <PrimaryButton
                             className="py-4 px-8 block"
                             disabled={processing}
                         >
-                            Send Enquiry
+                            Upload Property
                         </PrimaryButton>
                     </div>
+                    {progress && (
+                        <progress value={progress.percentage} max="100">
+                            {progress.percentage}%
+                        </progress>
+                    )}
                 </form>
             </div>
         </section>
