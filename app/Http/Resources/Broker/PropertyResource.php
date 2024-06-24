@@ -24,7 +24,9 @@ class PropertyResource extends JsonResource
             'description' => $this->description,
             'isPublished' => $this->isPublished,
             'characteristics' => new CharacteristicsResource($this->characteristic),
-            'broker' => new BrokerResource($this->broker)
+            'broker' => new BrokerResource($this->broker),
+            // 'upload_img' => new ImageResource($this->hasImage)
+            'upload_img' => $this->hasImage
         ];
     }
 }

@@ -1,9 +1,10 @@
 import BreadCrumb from "@/Components/Brokers/BreadCrumb";
+import Pagination from "@/Components/Pagination";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Listings({ auth, isABroker, property }) {
-    console.log(property);
+export default function Listings({ auth, isABroker, properties, success }) {
+    console.log(properties.data[0]);
     return (
         <Layout
             auth={auth}
@@ -11,6 +12,55 @@ export default function Listings({ auth, isABroker, property }) {
         >
             <Head title="My Listed Properties" />
             <section className="px-4 sm:py-16 lg:px-6 flex flex-col 2xl:items-center items-stretch py-8">
+                {success && (
+                    <div
+                        role="alert"
+                        data-dismissible="alert"
+                        className="mb-4 relative flex w-1/2 py-4 px-4 text-base text-white bg-emerald-500 rounded-lg"
+                    >
+                        <div className="shrink-0">
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 24 24"
+                                fill="currentColor"
+                                className="w-6 h-6"
+                            >
+                                <path
+                                    fillRule="evenodd"
+                                    d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                                    clipRule="evenodd"
+                                ></path>
+                            </svg>
+                        </div>
+                        <div className="ml-3 mr-12">
+                            <p className="block antialiased leading-snug tracking-normal text-white">
+                                {success}
+                            </p>
+                        </div>
+                        <button
+                            datadismissibletarget="alert"
+                            className="!absolute top-3 right-3 h-8 max-h-[32px] w-8 max-w-[32px] select-none rounded-lg text-center align-middle font-sans text-xs font-medium uppercase text-white transition-all hover:bg-white/10 active:bg-white/30 disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
+                            type="button"
+                        >
+                            <span className="absolute transform -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    className="w-6 h-6"
+                                    strokeWidth="2"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        d="M6 18L18 6M6 6l12 12"
+                                    ></path>
+                                </svg>
+                            </span>
+                        </button>
+                    </div>
+                )}
                 <div className="mt-10 grid max-w-md grid-cols-1 gap-4 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-6">
                     {/* Right side  */}
                     <article className="col-span-2 mb-4 text-slate-800">
@@ -40,125 +90,206 @@ export default function Listings({ auth, isABroker, property }) {
                             )}
                         </div>
                         {/* Listed Properties  */}
-                        <div className="my-5">
-                            <div className="group bg-white mt-10 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border pt-8 pb-2 text-gray-700 shadow transition hover:shadow-lg ">
-                                <Link
-                                    href="#"
-                                    className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4"
-                                >
-                                    <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
-                                        <img
-                                            src="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
-                                            alt=""
-                                            className="h-full w-full object-cover text-gray-700"
-                                        />
-                                    </div>
-                                </Link>
-                                <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-                                    <h3 className="text-sm text-gray-600">
-                                        Invision
-                                    </h3>
+                        {properties.data.map((property) => (
+                            <div
+                                key={property.id}
+                                className="my-5 border bg-white shadow-sm transition hover:shadow-lg rounded-sm"
+                            >
+                                <div className="group my-5 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg text-gray-700 ">
                                     <Link
                                         href="#"
-                                        className="mb-3 overflow-hidden pr-7 text-lg font-semibold sm:text-xl"
+                                        className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4"
                                     >
-                                        {" "}
-                                        Sr. Frontend Engineer{" "}
+                                        <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
+                                            <img
+                                                // src="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
+                                                src={
+                                                    property.upload_img[0]
+                                                        .upload_img
+                                                }
+                                                alt=""
+                                                className="h-full w-full object-cover text-gray-700"
+                                            />
+                                        </div>
                                     </Link>
-                                    <p className="overflow-hidden pr-7 text-sm">
-                                        Lorem ipsum dolor sit amet, consectetuer
-                                        adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore
-                                        magna .
-                                    </p>
+                                    <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
+                                        <h3 className="text-sm text-gray-600">
+                                            {property.address}
+                                        </h3>
+                                        <Link
+                                            href={route(
+                                                "listing.show",
+                                                property.id
+                                            )}
+                                            className="mb-3 overflow-hidden pr-7 text-lg font-semibold sm:text-xl"
+                                        >
+                                            {property.title}
+                                        </Link>
+                                        <p className="overflow-hidden pr-7 text-sm">
+                                            {property.description}
+                                        </p>
 
-                                    <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-500 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-                                        <div className="">
-                                            Experience:
-                                            <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-0.5 text-green-900">
-                                                {" "}
-                                                2 Years{" "}
-                                            </span>
+                                        <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-slate-900 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    Type:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
+                                                    {property.listing_type}
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    State:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-1 text-emerald-900">
+                                                    {property.state}
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    Status:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-1 text-emerald-900">
+                                                    {
+                                                        property.characteristics
+                                                            .property_status
+                                                    }
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className="">
-                                            Salary:
-                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
-                                                180-250k
-                                            </span>
+                                        {/* Action section  */}
+                                        <div className="mt-3 flex flex-col space-y-3 text-sm font-medium text-gray-900 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    Category:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-1 text-emerald-900">
+                                                    {
+                                                        property.characteristics
+                                                            .property_type
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    Size:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-1 text-emerald-900">
+                                                    {
+                                                        property.characteristics
+                                                            .sqft
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="font-extrabold">
+                                                    Price:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
+                                                    N
+                                                    {
+                                                        property.characteristics
+                                                            .price
+                                                    }
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                    {/* Action section  */}
-                                    <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-900 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-                                        <div className="font-extrabold">
-                                            Action:
-                                            <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-0.5 text-green-900">
-                                                {" "}
-                                                2 Years{" "}
-                                            </span>
+                                </div>
+                                <div className="bg-emerald-600 text-white lg:px-4 px-4 py-2">
+                                    <div className="px-4 flex justify-between">
+                                        <div className="flex flex-col justify-around space-y-3 text-sm sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
+                                            <div className="">
+                                                <span className="">
+                                                    Bathrooms:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
+                                                    {
+                                                        property.characteristics
+                                                            .bathrooms
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="">
+                                                    Bedrooms:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
+                                                    {
+                                                        property.characteristics
+                                                            .bedrooms
+                                                    }
+                                                </span>
+                                            </div>
+                                            <div className="">
+                                                <span className="">
+                                                    Visibilty:
+                                                </span>
+                                                <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
+                                                    {property.isPublished === 1
+                                                        ? "Published"
+                                                        : "Unpublished"}
+                                                </span>
+                                            </div>
                                         </div>
-                                        <div className="">
-                                            Salary:
-                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
-                                                180-250k
-                                            </span>
+                                        <div className="flex">
+                                            <Link
+                                                href={route(
+                                                    "listing.edit",
+                                                    property.id
+                                                )}
+                                                className="flex items-center justify-center px-2 mr-2 hover:text-emerald-200 "
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="1em"
+                                                    height="1em"
+                                                    viewBox="0 0 24 24"
+                                                    className="mr-2"
+                                                >
+                                                    <g
+                                                        fill="none"
+                                                        stroke="currentColor"
+                                                        strokeLinecap="round"
+                                                        strokeLinejoin="round"
+                                                        strokeWidth={1.5}
+                                                    >
+                                                        <path d="M19.09 14.441v4.44a2.37 2.37 0 0 1-2.369 2.369H5.12a2.37 2.37 0 0 1-2.369-2.383V7.279a2.356 2.356 0 0 1 2.37-2.37H9.56"></path>
+                                                        <path d="M6.835 15.803v-2.165c.002-.357.144-.7.395-.953l9.532-9.532a1.362 1.362 0 0 1 1.934 0l2.151 2.151a1.36 1.36 0 0 1 0 1.934l-9.532 9.532a1.361 1.361 0 0 1-.953.395H8.197a1.362 1.362 0 0 1-1.362-1.362M19.09 8.995l-4.085-4.086"></path>
+                                                    </g>
+                                                </svg>
+                                                Edit
+                                            </Link>
+                                            <Link
+                                                href={route(
+                                                    "listing.destroy",
+                                                    property.id
+                                                )}
+                                                className="flex items-center justify-center px-2 mr-2 hover:text-emerald-200 "
+                                            >
+                                                <svg
+                                                    xmlns="http://www.w3.org/2000/svg"
+                                                    width="1em"
+                                                    height="1em"
+                                                    viewBox="0 0 24 24"
+                                                >
+                                                    <path
+                                                        fill="currentColor"
+                                                        d="M10 5h4a2 2 0 1 0-4 0M8.5 5a3.5 3.5 0 1 1 7 0h5.75a.75.75 0 0 1 0 1.5h-1.32l-1.17 12.111A3.75 3.75 0 0 1 15.026 22H8.974a3.75 3.75 0 0 1-3.733-3.389L4.07 6.5H2.75a.75.75 0 0 1 0-1.5zm2 4.75a.75.75 0 0 0-1.5 0v7.5a.75.75 0 0 0 1.5 0zM14.25 9a.75.75 0 0 1 .75.75v7.5a.75.75 0 0 1-1.5 0v-7.5a.75.75 0 0 1 .75-.75m-7.516 9.467a2.25 2.25 0 0 0 2.24 2.033h6.052a2.25 2.25 0 0 0 2.24-2.033L18.424 6.5H5.576z"
+                                                    ></path>
+                                                </svg>
+                                                Delete
+                                            </Link>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="my-5">
-                            <div className="group bg-white mt-10 grid max-w-screen-md grid-cols-12 space-x-8 overflow-hidden rounded-lg border py-8 text-gray-700 shadow transition hover:shadow-lg ">
-                                <Link
-                                    href="#"
-                                    className="order-2 col-span-1 mt-4 -ml-14 text-left text-gray-600 hover:text-gray-700 sm:-order-1 sm:ml-4"
-                                >
-                                    <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
-                                        <img
-                                            src="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
-                                            alt=""
-                                            className="h-full w-full object-cover text-gray-700"
-                                        />
-                                    </div>
-                                </Link>
-                                <div className="col-span-11 flex flex-col pr-8 text-left sm:pl-4">
-                                    <h3 className="text-sm text-gray-600">
-                                        Invision
-                                    </h3>
-                                    <a
-                                        href="#"
-                                        className="mb-3 overflow-hidden pr-7 text-lg font-semibold sm:text-xl"
-                                    >
-                                        {" "}
-                                        Sr. Frontend Engineer{" "}
-                                    </a>
-                                    <p className="overflow-hidden pr-7 text-sm">
-                                        Lorem ipsum dolor sit amet, consectetuer
-                                        adipiscing elit, sed diam nonummy nibh
-                                        euismod tincidunt ut laoreet dolore
-                                        magna .
-                                    </p>
+                        ))}
 
-                                    <div className="mt-5 flex flex-col space-y-3 text-sm font-medium text-gray-500 sm:flex-row sm:items-center sm:space-y-0 sm:space-x-2">
-                                        <div className="">
-                                            Experience:
-                                            <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-0.5 text-green-900">
-                                                {" "}
-                                                2 Years{" "}
-                                            </span>
-                                        </div>
-                                        <div className="">
-                                            Salary:
-                                            <span className="ml-2 mr-3 rounded-full bg-emerald-100 px-2 py-0.5 text-emerald-900">
-                                                180-250k
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         {/* Pagination */}
                         <div className="flex justify-center">
-                            Pagination goes here
+                            <Pagination links={properties.meta.links} />
                         </div>
                         <div className="flex items-center justify-between">
                             <Link

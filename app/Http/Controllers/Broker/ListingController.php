@@ -22,13 +22,17 @@ class ListingController extends Controller
         $broker = Broker::query()->where('user_id', Auth::id())->first();
 
         // $property = Property::query()->where('broker_id', $broker->id)->paginate(10);
-        $propQuery = Property::query()->where('broker_id', $broker->id)->paginate(10);
+        $propQuery = Property::query()
+            ->where('broker_id', $broker->id)
+            ->orderBy('id', 'desc')
+            ->paginate(10);
         $property = PropertyResource::collection($propQuery);
         $isABroker = $broker ? true : false;
         return Inertia::render('Brokers/Listing/Index', [
             'auth' => $auth,
             'isABroker' => $isABroker,
-            'property' => $property
+            'properties' => $property,
+            'success' => session('success')
         ]);
     }
     public function create()
@@ -79,7 +83,23 @@ class ListingController extends Controller
             throw $th;
         }
 
-        return to_route('dashboard')
+        return to_route('listing.index')
             ->with('success', 'Property Added successfully');
+    }
+
+    public function show(Property $property)
+    {
+    }
+
+    public function edit(Property $property)
+    {
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Property $property)
+    {
+        //
     }
 }
