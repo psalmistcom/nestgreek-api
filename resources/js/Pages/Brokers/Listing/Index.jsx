@@ -4,8 +4,15 @@ import SuccessMessage from "@/Components/SuccessMessage";
 import Layout from "@/Layouts/Layout";
 import { Head, Link } from "@inertiajs/react";
 
-export default function Listings({ auth, isABroker, properties, success }) {
-    console.log(properties.data[0]);
+export default function Listings({
+    auth,
+    isABroker,
+    properties,
+    success,
+    published,
+    unPublished,
+}) {
+    // console.log(unPublished);
     return (
         <Layout
             auth={auth}
@@ -294,20 +301,23 @@ export default function Listings({ auth, isABroker, properties, success }) {
                             </div>
                             <div className="m-5">
                                 <p>
-                                    Sold Listings:{" "}
-                                    <span className="font-extrabold">0</span>
+                                    Published:{" "}
+                                    <span className="font-extrabold">
+                                        {published}
+                                    </span>
                                 </p>
                                 <p>
-                                    On Sale Listings:{" "}
-                                    <span className="font-extrabold">0</span>
+                                    Unpublished:{" "}
+                                    <span className="font-extrabold">
+                                        {unPublished}
+                                    </span>
                                 </p>
-                                <p>
-                                    On Hold Listings:{" "}
-                                    <span className="font-extrabold">0</span>
-                                </p>
+
                                 <p>
                                     Total Listings:{" "}
-                                    <span className="font-extrabold">0</span>
+                                    <span className="font-extrabold">
+                                        {properties.data.length}
+                                    </span>
                                 </p>
                             </div>
                         </div>

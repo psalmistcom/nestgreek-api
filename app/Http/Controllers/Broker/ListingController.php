@@ -27,11 +27,21 @@ class ListingController extends Controller
             ->orderBy('id', 'desc')
             ->paginate(10);
         $property = PropertyResource::collection($propQuery);
+        $published = Property::query()
+            ->where('isPublished', 1)
+            ->where('broker_id', $broker->id)
+            ->count();
+        $unPublished = Property::query()
+            ->where('isPublished', 0)
+            ->where('broker_id', $broker->id)
+            ->count();
         $isABroker = $broker ? true : false;
         return Inertia::render('Brokers/Listing/Index', [
             'auth' => $auth,
             'isABroker' => $isABroker,
             'properties' => $property,
+            'published' => $published,
+            'unPublished' => $unPublished,
             'success' => session('success')
         ]);
     }
