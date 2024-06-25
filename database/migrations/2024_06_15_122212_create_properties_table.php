@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('state')->required();
             $table->longText('description')->required();
             $table->boolean('isPublished')->required();
+            $table->string('upload_img')->nullable();
             $table->timestamps();
 
             $table->foreign('broker_id')

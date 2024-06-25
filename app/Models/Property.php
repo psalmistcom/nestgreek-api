@@ -21,6 +21,7 @@ class Property extends Model
         'state',
         'description',
         'isPublished',
+        // 'upload_img',
     ];
 
 
@@ -28,9 +29,9 @@ class Property extends Model
     {
         return $this->hasOne(PropertyCharacteristics::class);
     }
-    public function hasImage(): HasMany
+    public function hasImages(): HasOne
     {
-        return $this->hasMany(PropertyImage::class);
+        return $this->hasOne(PropertyImage::class);
     }
 
     public function broker(): BelongsTo

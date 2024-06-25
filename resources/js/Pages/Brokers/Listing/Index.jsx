@@ -12,7 +12,7 @@ export default function Listings({
     published,
     unPublished,
 }) {
-    // console.log(unPublished);
+    console.log(properties.data[0]);
     return (
         <Layout
             auth={auth}
@@ -50,6 +50,7 @@ export default function Listings({
                             )}
                         </div>
                         {/* Listed Properties  */}
+
                         {properties.data.map((property) => (
                             <div
                                 key={property.id}
@@ -63,10 +64,8 @@ export default function Listings({
                                         <div className="group relative h-16 w-16 overflow-hidden rounded-lg">
                                             <img
                                                 // src="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
-                                                src={
-                                                    property.upload_img[0]
-                                                        .upload_img
-                                                }
+                                                // src={`http://localhost:8000/storage/ ${property.upload_img}`}
+                                                src={property.upload_img}
                                                 alt=""
                                                 className="h-full w-full object-cover text-gray-700"
                                             />

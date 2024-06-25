@@ -12,8 +12,8 @@ class PropertyImage extends Model
 
     protected $fillable = ['property_id', 'upload_img'];
 
-    public function property(): BelongsTo
-    {
-        return $this->belongsTo(Property::class);
-    }
+    // public function property(): BelongsTo
+    // {
+    //     return $this->belongsTo(Property::class);
+    // }
 }

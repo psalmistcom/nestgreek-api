@@ -4,6 +4,7 @@ namespace App\Http\Resources\Broker;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Storage;
 
 class PropertyResource extends JsonResource
 {
@@ -25,8 +26,10 @@ class PropertyResource extends JsonResource
             'isPublished' => $this->isPublished,
             'characteristics' => new CharacteristicsResource($this->characteristic),
             'broker' => new BrokerResource($this->broker),
-            // 'upload_img' => new ImageResource($this->hasImage)
-            'upload_img' => $this->hasImage
+            // 'images' => new ImageResource($this->hasImages)
+            // 'upload_img' => $this->upload_img
+            'upload_img' => $this->upload_img ? Storage::url($this->upload_img) : '',
+            // 'upload_img' => $this->hasImage
         ];
     }
 }

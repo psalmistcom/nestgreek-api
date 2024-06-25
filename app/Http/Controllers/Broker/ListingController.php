@@ -63,9 +63,11 @@ class ListingController extends Controller
         try {
             $data = $request->validated();
             $upload_img = $data['upload_img'] ?? null;
+
             if ($upload_img) {
                 $data['upload_img'] = $upload_img->store('property/' . Str::random(), 'public');
             }
+            // dd($data['upload_img']);
             $property  = Property::create([
                 'broker_id' => $data['broker_id'],
                 'title' => $data['title'],
@@ -73,7 +75,8 @@ class ListingController extends Controller
                 'listing_type' => $data['listing_type'],
                 'state' => $data['state'],
                 'description' => $data['description'],
-                'isPublished' => $data['isPublished']
+                'isPublished' => $data['isPublished'],
+                'upload_img' => $data['upload_img']
             ]);
             $property->characteristic()->create([
                 'property_id' => $property->id,

@@ -31,7 +31,7 @@ export default function PropertyForm({ broker }) {
         // console.log(data);
         post(route("listing.store"), {
             // preserveScroll: true,
-            onSuccess: () => reset(),
+            // onSuccess: () => reset(),
         });
     };
     return (
