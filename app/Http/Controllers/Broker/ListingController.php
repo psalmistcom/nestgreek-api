@@ -9,6 +9,8 @@ use App\Models\Broker;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use Illuminate\Support\Str;
 
@@ -87,10 +89,9 @@ class ListingController extends Controller
                 'property_status' => $data['property_status'],
                 'property_type' => $data['property_type']
             ]);
-            $property->hasImage()->create([
+            $property->hasImages()->create([
                 'property_id' => $property->id,
                 'upload_img' => $data['upload_img']
-
             ]);
         } catch (\Throwable $th) {
             throw $th;
@@ -98,6 +99,10 @@ class ListingController extends Controller
 
         return to_route('listing.index')
             ->with('success', 'Property Added successfully');
+    }
+
+    public function add_image()
+    {
     }
 
     public function show(Property $property)
@@ -111,8 +116,27 @@ class ListingController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Property $property)
+
+    public function checking(Property $property)
     {
-        //
+        dd($property->hasImages());
+    }
+    public function destroy(string $id)
+    {
+        // DB::table('property_characteristics')->where('property_id', $property->id)->delete();
+        // DB::table('property_images')->where('property_id', $property->id)->delete();
+        $property = Property::find($id);
+
+        $characterics = $property->characteristic()->delete();
+        if ($characterics) {
+            $property->hasImages()->delete();
+            $property->delete();
+            if ($property->upload_img) {
+                Storage::disk('public')->deleteDirectory(dirname($property->upload_img));
+            }
+            return to_route('listing.index')->with('success', "Property deleted Succesfully!");
+        }
+
+        return to_route('listing.index')->with('success', "Property not deleted!");
     }
 }

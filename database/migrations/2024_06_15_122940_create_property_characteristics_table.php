@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('property_characteristics', function (Blueprint $table) {
-            $table->unsignedBigInteger('property_id')->unique();
+            $table->foreignId('property_id')->unique()->onDelete('cascade');
             $table->float('price')->required();
             $table->integer('bedrooms');
             $table->integer('bathrooms');
@@ -30,10 +30,10 @@ return new class extends Migration
             ])->required();
             $table->timestamps();
 
-            $table->foreign('property_id')
-                ->references('id')
-                ->on('properties')
-                ->cascadeOnDelete();
+            // $table->foreign('property_id')
+            //     ->references('id')
+            //     ->on('properties')
+            //     ->cascadeOnDelete();
         });
     }
 

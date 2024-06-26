@@ -39,6 +39,8 @@ Route::prefix('/broker')->group(function () {
         Route::resource('broker', BrokerProfileController::class);
         Route::middleware([BrokerMiddleware::class])->group(function () {
             Route::resource('/listing', ListingController::class);
+            Route::get('/listing/add-image/{listing}', [ListingController::class, 'add_image'])->name('listing.add-image');
+            Route::post('/checking', [ListingController::class, 'checking'])->name('listing.checking');
         });
     });
 });

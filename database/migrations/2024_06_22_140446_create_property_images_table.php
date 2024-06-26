@@ -13,9 +13,16 @@ return new class extends Migration
     {
         Schema::create('property_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('property_id')->constrained('properties');
+            // $table->unsignedBigInteger('property_id');
+            $table->foreignId('property_id')->onDelete('cascade');
+            // $table->foreignId('property_id')->constrained('properties');
             $table->string('upload_img')->nullable();
             $table->timestamps();
+
+            // $table->foreign('property_id')
+            //     ->references('id')
+            //     ->on('properties')
+            //     ->cascadeOnDelete();
         });
     }
 

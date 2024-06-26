@@ -21,7 +21,7 @@ class Property extends Model
         'state',
         'description',
         'isPublished',
-        // 'upload_img',
+        'upload_img',
     ];
 
 
