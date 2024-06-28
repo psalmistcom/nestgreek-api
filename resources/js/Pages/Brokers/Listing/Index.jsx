@@ -12,14 +12,13 @@ export default function Listings({
     published,
     unPublished,
 }) {
-    console.log(properties.data.length);
+    // console.log(properties.data.length);
 
     const deleteProperty = (property) => {
         // console.log(typeof property);
         if (!window.confirm("Are you sure you want to delete this Property?")) {
             return;
         }
-        // router.post(route("listing.checking", property.id));
         router.delete(route("listing.destroy", property));
     };
     const addPropertyBtn = (
