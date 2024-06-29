@@ -16,6 +16,7 @@ use Illuminate\Support\Str;
 
 class ListingController extends Controller
 {
+
     public function index()
     {
         // $property = PropertyResource::collection(Property::paginate());
@@ -132,17 +133,33 @@ class ListingController extends Controller
             }
             $data['upload_img'] = $upload_img->store('property/' . Str::random(), 'public');
         }
-        $result = $property->update(
-            [
-                'title' => $data['title'],
-                'address' => $data['address'],
-                'listing_type' => $data['listing_type'],
-                'state' => $data['state'],
-                'description' => $data['description'],
-                'isPublished' => $data['isPublished'],
-                // 'upload_img' => $data['upload_img'],
-            ]
-        );
+        if (isset($data['upload_img']) != null) {
+            $result = $property->update(
+                [
+                    'title' => $data['title'],
+                    'address' => $data['address'],
+                    'listing_type' => $data['listing_type'],
+                    'state' => $data['state'],
+                    'description' => $data['description'],
+                    'isPublished' => $data['isPublished'],
+                    'upload_img' => $data['upload_img']
+                ]
+            );
+        } else {
+            $result = $property->update(
+                [
+                    'title' => $data['title'],
+                    'address' => $data['address'],
+                    'listing_type' => $data['listing_type'],
+                    'state' => $data['state'],
+                    'description' => $data['description'],
+                    'isPublished' => $data['isPublished'],
+                    // 'upload_img' => $data['upload_img'] ?? null,
+                    // 'upload_img' => isset($data['upload_img']) ? $data['upload_img'] : $upload_img,                
+                ]
+            );
+            # code...
+        }
         if ($result) {
             $property->characteristic->where('property_id', $property->id)
                 ->update(
@@ -187,5 +204,17 @@ class ListingController extends Controller
         }
 
         return to_route('listing.index')->with('success', "Property not deleted!");
+    }
+
+    public function characters($data): array
+    {
+        return [
+            'price' => $data['price'],
+            'bedrooms' => $data['bedrooms'],
+            'bathrooms' => $data['bathrooms'],
+            'sqft' => $data['sqft'],
+            'property_status' => $data['property_status'],
+            'property_type' => $data['property_type']
+        ];
     }
 }

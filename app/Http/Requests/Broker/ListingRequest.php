@@ -25,31 +25,6 @@ class ListingRequest extends FormRequest
      */
     public function rules(): array
     {
-
-        // return [
-        //     "broker_id" => 'required|exists:brokers,id',
-        //     "title" => 'required|max:255',
-        //     "address" => 'required',
-        //     "listing_type" => [
-        //         'required', 'string',
-        //         Rule::in([
-        //             ListingTypeEnum::LEASE->value,
-        //             ListingTypeEnum::MORTGAGE->value,
-        //             ListingTypeEnum::RENT->value,
-        //             ListingTypeEnum::SALE->value
-        //         ])
-        //     ],
-        //     "state" => 'required',
-        //     "description" => 'required',
-        //     "isPublished" => 'required',
-        //     "price" => 'required|numeric',
-        //     "bedrooms" => 'nullable',
-        //     "bathrooms" => 'nullable',
-        //     "sqft" => 'nullable',
-        //     "property_status" => 'nullable',
-        //     "property_type" => 'nullable',
-        //     "upload_img" => 'nullable',
-        // ];
         return [
             "broker_id" => 'required|exists:brokers,id',
             "title" => 'required|max:255',
@@ -85,7 +60,7 @@ class ListingRequest extends FormRequest
                     PropertyTypeEnum::LANDED->value,
                 ])
             ],
-            "upload_img" => 'nullable|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            "upload_img" => 'required|image|mimes:jpg,png,jpeg,gif,svg|max:2048',
         ];
     }
 }

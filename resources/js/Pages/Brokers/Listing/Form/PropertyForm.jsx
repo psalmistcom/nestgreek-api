@@ -372,6 +372,10 @@ export default function PropertyForm({ broker }) {
                                     //     // images.push(e.target.files[0])
                                     // }
                                 />
+                                <InputError
+                                    className="mt-2"
+                                    message={errors.upload_img}
+                                />
                             </div>
                         </div>
                     </div>

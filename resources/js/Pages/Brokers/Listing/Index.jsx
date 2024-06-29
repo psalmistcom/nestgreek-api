@@ -295,6 +295,10 @@ export default function Listings({
                                         </div>
                                     </div>
                                 ))}
+                                {/* Pagination */}
+                                <div className="flex justify-center">
+                                    <Pagination links={properties.meta.links} />
+                                </div>
                             </>
                         ) : (
                             <>
@@ -321,11 +325,6 @@ export default function Listings({
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-
-                                {/* Pagination */}
-                                <div className="flex justify-center">
-                                    <Pagination links={properties.meta.links} />
                                 </div>
                             </>
                         )}
