@@ -1,7 +1,8 @@
 import SectionIntro from "../SectionIntro";
 import ListingCard from "../ListingCard";
 
-export default function FeaturedListings({ page = true }) {
+export default function FeaturedListings({ page = true, properties }) {
+    console.log(properties);
     return (
         <section className="px-4 sm:py-16 lg:px-6 flex flex-col items-center bg-white py-8">
             {page && (

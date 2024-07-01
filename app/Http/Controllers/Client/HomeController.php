@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Broker\PropertyResource;
+use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -11,14 +13,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $auth = Auth::user();
-        return Inertia::render('Home', ['auth' => $auth]);
+        $properties = Property::query()->limit(6)->get();
 
-        // return Inertia::render('Welcome', [
-        //     'features' => FeatureResource::collection($features),
-        //     'canLogin' => Route::has('login'),
-        //     'canRegister' => Route::has('register'),
-        // ]);
+        $auth = Auth::user();
+        return Inertia::render('Home', [
+            'auth' => $auth,
+            'properties' => PropertyResource::collection($properties)
+        ]);
     }
 
     public function about()
