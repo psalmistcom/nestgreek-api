@@ -23,6 +23,6 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // Property::factory()->count(10)->create();
-        PropertyCharacteristics::factory()->count(1)->create();
+        // PropertyCharacteristics::factory()->count(10)->create();
     }
 }

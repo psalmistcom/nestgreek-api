@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\Broker;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,14 +19,14 @@ class PropertyFactory extends Factory
     public function definition(): array
     {
         return [
-            'broker_id' => fake()->randomElement(['1', '2']),
+            'broker_id' => User::all()->random()->id,
             'title' => fake()->sentence(),
             'address' => fake()->address(),
             'listing_type' => fake()->randomElement(['For Sale', 'For Rent', 'Mortgage', 'For Lease']),
             'state' => fake()->country(),
             'description' => fake()->realText(),
             'isPublished' => fake()->randomElement(['1', '0']),
-            'upload_img' => fake()->image(),
+            'upload_img' => fake()->imageUrl(),
         ];
     }
 }

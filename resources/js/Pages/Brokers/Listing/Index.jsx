@@ -1,4 +1,5 @@
 import BreadCrumb from "@/Components/Brokers/BreadCrumb";
+import EmptyProperty from "@/Components/EmptyProperty";
 import Pagination from "@/Components/Pagination";
 import SuccessMessage from "@/Components/SuccessMessage";
 import Layout from "@/Layouts/Layout";
@@ -301,32 +302,7 @@ export default function Listings({
                                 </div>
                             </>
                         ) : (
-                            <>
-                                <div className="my-5 border bg-white shadow-sm transition rounded-sm">
-                                    <div className="my-5 rounded-lg text-gray-700 ">
-                                        <div className="flex justify-center items-center">
-                                            <div className="w-1/2 flex flex-col items-center">
-                                                <img
-                                                    src="../empty.jpg"
-                                                    width="150"
-                                                    alt=""
-                                                    className=""
-                                                />
-                                                <h3 className="px-15 text-lg tracking-wide leading-6 text-center items-center text-gray-600">
-                                                    You did not have any
-                                                    Property. Kindly use the
-                                                    <span className="font-extrabold text-emerald-600">
-                                                        {" "}
-                                                        "Add Property"
-                                                    </span>{" "}
-                                                    button to upload your
-                                                    property
-                                                </h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </>
+                            <EmptyProperty />
                         )}
                         <div className="flex items-center justify-between">
                             {addPropertyBtn}
