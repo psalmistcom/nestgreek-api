@@ -43,7 +43,7 @@ class HomeController extends Controller
 
     public function properties()
     {
-        $properties = Property::query()->where('isPublished', 1)->get();
+        $properties = Property::query()->where('isPublished', 1)->paginate(10);
         $auth = Auth::user();
         return Inertia::render(
             'Property',

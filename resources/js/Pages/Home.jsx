@@ -18,7 +18,11 @@ export default function Welcome({ auth, properties, characs }) {
                 />
                 <AboutSection />
                 <ServicesSection />
-                <FeaturedListings properties={properties} characs={characs} />
+                <FeaturedListings
+                    properties={properties}
+                    paginate={false}
+                    page={true}
+                />
                 <Testimonial />
                 <Cta />
             </Layout>

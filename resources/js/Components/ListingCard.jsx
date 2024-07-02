@@ -108,7 +108,7 @@ export default function ListingCard({
                 <ul className="m-0 flex list-none items-center justify-between px-0 pt-6 pb-0">
                     <li className="text-left">
                         <span className="text-sm text-gray-400">Price</span>
-                        <p className="m-0 text-base font-medium">${price}</p>
+                        <p className="m-0 text-base font-medium">{price}</p>
                     </li>
                 </ul>
             </div>

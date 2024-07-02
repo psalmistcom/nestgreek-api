@@ -164,12 +164,16 @@ export default function Listings({
                                                             Price:
                                                         </span>
                                                         <span className="ml-2 mr-3 rounded-full bg-green-100 px-2 py-1 text-green-900">
-                                                            N
-                                                            {
-                                                                property
-                                                                    .characteristics
-                                                                    .price
-                                                            }
+                                                            {property.characteristics.price.toLocaleString(
+                                                                "en-US",
+                                                                {
+                                                                    currencyDisplay:
+                                                                        "narrowSymbol",
+                                                                    style: "currency",
+                                                                    currency:
+                                                                        "NGN",
+                                                                }
+                                                            )}
                                                         </span>
                                                     </div>
                                                 </div>
