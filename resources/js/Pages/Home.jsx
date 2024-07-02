@@ -6,9 +6,8 @@ import ServicesSection from "@/Components/Home/ServicesSection";
 import FeaturedListings from "@/Components/Home/FeaturedListings";
 import { Testimonial } from "@/Components/Home/Testimonial";
 import Cta from "@/Components/Home/Cta";
-import Footer from "@/Components/Home/Footer";
 
-export default function Welcome({ auth, properties }) {
+export default function Welcome({ auth, properties, characs }) {
     return (
         <>
             <Layout auth={auth}>
@@ -19,7 +18,7 @@ export default function Welcome({ auth, properties }) {
                 />
                 <AboutSection />
                 <ServicesSection />
-                <FeaturedListings properties={properties} />
+                <FeaturedListings properties={properties} characs={characs} />
                 <Testimonial />
                 <Cta />
             </Layout>

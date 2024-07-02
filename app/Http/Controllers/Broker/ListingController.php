@@ -205,16 +205,4 @@ class ListingController extends Controller
 
         return to_route('listing.index')->with('success', "Property not deleted!");
     }
-
-    public function characters($data): array
-    {
-        return [
-            'price' => $data['price'],
-            'bedrooms' => $data['bedrooms'],
-            'bathrooms' => $data['bathrooms'],
-            'sqft' => $data['sqft'],
-            'property_status' => $data['property_status'],
-            'property_type' => $data['property_type']
-        ];
-    }
 }

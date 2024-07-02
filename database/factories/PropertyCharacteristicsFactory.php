@@ -17,7 +17,7 @@ class PropertyCharacteristicsFactory extends Factory
     public function definition(): array
     {
         return [
-            'property_id' => fake()->randomNumber(2, true),
+            'property_id' => '20',
             'price' => fake()->numberBetween(2000000, 100000000),
             'bedrooms' => fake()->randomElement([3, 5, 2, 6]),
             'bathrooms' => fake()->randomElement([3, 5, 2, 6]),

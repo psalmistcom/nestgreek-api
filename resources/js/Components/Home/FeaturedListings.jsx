@@ -13,53 +13,49 @@ export default function FeaturedListings({ page = true, properties }) {
                 />
             )}
 
-            <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-8">
-                <ListingCard
-                    image="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
-                    title="3 Bedroom Duplex"
-                    link="#"
-                    address="238 Baton Rouge, LA 70809, USA"
-                    sqm="1200"
-                    bath="4"
-                    bed="4"
-                    price="4000"
-                    propType="For sale"
-                />
-                <ListingCard
-                    image="https://nestgreeksltd.com/img/properties/1710788493_PHOTO-2024-01-30-20-47-53.jpg"
-                    title="Room and Palour Self Contained"
-                    link="#"
-                    address="238 Baton Rouge, LA 70809, USA"
-                    sqm="1200"
-                    bath="4"
-                    bed="4"
-                    price="4000"
-                    propType="For Rent"
-                    typeColor="red"
-                />
-                <ListingCard
-                    image="luxury-real-estate.jpg"
-                    title="5 Bedroom Mansion"
-                    link="#"
-                    address="238 Baton Rouge, LA 70809, USA"
-                    sqm="1200"
-                    bath="4"
-                    bed="4"
-                    price="4000"
-                    propType="For sale"
-                />
-                <ListingCard
-                    image="https://nestgreeksltd.com/img/properties/1709566228_PHOTO-2024-01-10-08-32-05.jpg"
-                    title="2 Bedroom Terrace Duplex + BQ"
-                    link="#"
-                    address="238 Baton Rouge, LA 70809, USA"
-                    sqm="1200"
-                    bath="4"
-                    bed="4"
-                    price="4000"
-                    propType="For sale"
-                />
-            </div>
+            {properties.length !== 0 ? (
+                <>
+                    <div className="mt-10 grid max-w-md grid-cols-1 gap-6 px-2 sm:max-w-lg sm:px-20 md:max-w-screen-xl md:grid-cols-2 md:px-10 lg:grid-cols-3 lg:gap-8">
+                        {properties.map((property) => (
+                            <ListingCard
+                                key={property.id}
+                                image={property.upload_img}
+                                title={property.title}
+                                link={route("single_property", property.id)}
+                                address={property.address}
+                                sqm={property.characteristics.sqft}
+                                bath={property.characteristics.bathrooms}
+                                bed={property.characteristics.bedrooms}
+                                price={property.characteristics.price}
+                                propType={
+                                    property.characteristics.property_type
+                                }
+                            />
+                        ))}
+                    </div>
+                </>
+            ) : (
+                <>
+                    <div className="my-5 border bg-white shadow-sm transition rounded-sm">
+                        <div className="my-5 rounded-lg text-gray-700 ">
+                            <div className="flex justify-center items-center">
+                                <div className="w-1/2 flex flex-col items-center">
+                                    <img
+                                        src="../empty.jpg"
+                                        width="150"
+                                        alt=""
+                                        className=""
+                                    />
+                                    <h3 className="px-15 text-lg tracking-wide leading-6 text-center items-center text-gray-600">
+                                        There are no Properties at the moment,
+                                        Kindly check back in the nearest future
+                                    </h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </>
+            )}
         </section>
     );
 }

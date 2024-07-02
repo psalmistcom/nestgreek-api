@@ -5,15 +5,13 @@ use App\Http\Controllers\Broker\ContactAdminController;
 use App\Http\Controllers\Broker\DashboardController;
 use App\Http\Controllers\Broker\ListingController;
 use App\Http\Controllers\Client\HomeController;
-use App\Http\Controllers\Client\ContactController;
 use App\Http\Controllers\Client\ContactEnquiryController;
 use App\Http\Controllers\Broker\ProfileController;
 use App\Http\Middleware\BrokerMiddleware;
-use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/property/{id}', [HomeController::class, 'showSingleProperty'])->name('single_property');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');
 Route::get('/properties', [HomeController::class, 'properties'])->name('properties');

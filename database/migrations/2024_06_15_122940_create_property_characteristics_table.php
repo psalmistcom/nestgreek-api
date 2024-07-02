@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('property_characteristics', function (Blueprint $table) {
-            $table->foreignId('property_id')->unique()->onDelete('cascade');
+            $table->foreignUuid('property_id')->unique()->onDelete('cascade');
             $table->float('price')->required();
             $table->integer('bedrooms');
             $table->integer('bathrooms');

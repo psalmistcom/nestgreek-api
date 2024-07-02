@@ -39,7 +39,10 @@ export default function Layout({ children, header, auth }) {
                             </NavLink>
                             <NavLink
                                 href={route("properties")}
-                                active={route().current("properties")}
+                                active={
+                                    route().current("properties") ||
+                                    route().current("single_property")
+                                }
                             >
                                 Properties
                             </NavLink>

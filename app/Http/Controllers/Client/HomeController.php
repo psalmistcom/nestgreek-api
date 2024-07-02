@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Client;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\Broker\CharacteristicsResource;
 use App\Http\Resources\Broker\PropertyResource;
 use App\Models\Property;
+use App\Models\PropertyCharacteristics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
@@ -13,12 +15,13 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $properties = Property::query()->limit(6)->get();
-
+        $properties = Property::query()->where('isPublished', 1)->limit(6)->get();
+        // $characs = PropertyCharacteristics::all();
         $auth = Auth::user();
         return Inertia::render('Home', [
             'auth' => $auth,
-            'properties' => PropertyResource::collection($properties)
+            'properties' => PropertyResource::collection($properties),
+            // 'characs' => CharacteristicsResource::collection($characs)
         ]);
     }
 
@@ -38,10 +41,26 @@ class HomeController extends Controller
         ]);
     }
 
-
     public function properties()
     {
+        $properties = Property::query()->where('isPublished', 1)->get();
         $auth = Auth::user();
-        return Inertia::render('Property', ['auth' => $auth]);
+        return Inertia::render(
+            'Property',
+            [
+                'auth' => $auth,
+                'properties' => PropertyResource::collection($properties)
+            ]
+        );
+    }
+
+    public function showSingleProperty(string $id)
+    {
+        $property = Property::find($id);
+        $auth = Auth::user();
+        return inertia('SingleProperties', [
+            'auth' => $auth,
+            'property' => new PropertyResource($property),
+        ]);
     }
 }

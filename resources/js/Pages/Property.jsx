@@ -3,7 +3,7 @@ import FeaturedListings from "@/Components/Home/FeaturedListings";
 import Layout from "@/Layouts/Layout";
 import { Head } from "@inertiajs/react";
 
-export default function Property({ auth }) {
+export default function Property({ auth, properties }) {
     return (
         <Layout auth={auth}>
             <Head title="Properties" />
@@ -12,7 +12,7 @@ export default function Property({ auth }) {
                 prevTitle="Home"
                 prevLink={route("home")}
             />
-            <FeaturedListings page={false} />
+            <FeaturedListings page={false} properties={properties} />
         </Layout>
     );
 }

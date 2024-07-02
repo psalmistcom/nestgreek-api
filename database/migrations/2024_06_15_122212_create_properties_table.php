@@ -14,7 +14,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('properties', function (Blueprint $table) {
-            $table->id();
+            $table->uuid('id')->primary();
             $table->unsignedBigInteger('broker_id');
             $table->string('title')->required();
             $table->string('address');
