@@ -11,6 +11,7 @@ use App\Http\Middleware\BrokerMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/property/type/{type}', [HomeController::class, 'propertyType'])->name('property_type');
 Route::get('/property/{id}', [HomeController::class, 'showSingleProperty'])->name('single_property');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 Route::get('/contact', [HomeController::class, 'contact'])->name('contact');

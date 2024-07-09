@@ -7,7 +7,7 @@ import FeaturedListings from "@/Components/Home/FeaturedListings";
 import { Testimonial } from "@/Components/Home/Testimonial";
 import Cta from "@/Components/Home/Cta";
 
-export default function Welcome({ auth, properties, characs }) {
+export default function Welcome({ auth, properties }) {
     return (
         <>
             <Layout auth={auth}>
@@ -17,7 +17,7 @@ export default function Welcome({ auth, properties, characs }) {
                     propLink="dashboard"
                 />
                 <AboutSection />
-                <ServicesSection />
+                <ServicesSection properties={properties} />
                 <FeaturedListings
                     properties={properties}
                     paginate={false}

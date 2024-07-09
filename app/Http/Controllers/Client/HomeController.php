@@ -9,6 +9,7 @@ use App\Models\Property;
 use App\Models\PropertyCharacteristics;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 
 class HomeController extends Controller
@@ -62,5 +63,17 @@ class HomeController extends Controller
             'auth' => $auth,
             'property' => new PropertyResource($property),
         ]);
+    }
+    public function propertyType(string $type)
+    {
+
+        $property = DB::table('property')->where('listing_type', $type);
+        dd($property);
+
+        // $auth = Auth::user();
+        // return inertia('SingleProperties', [
+        //     'auth' => $auth,
+        //     'property' => new PropertyResource($property),
+        // ]);
     }
 }
